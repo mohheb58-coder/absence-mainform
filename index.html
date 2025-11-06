@@ -348,11 +348,12 @@ const columns = row.split(';').map(col => col.trim().replace(/"/g, ''));
             }
         });
 
-        updateDateDisplay();
-        loadData();
+       const date = new Date(); // تعریف متغیر date
+const displayDate = date.toLocaleDateString();
         openTab('absence-tab');
     </script>
 </body>
 
 </html>
+
 
