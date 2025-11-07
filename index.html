@@ -1,4 +1,4 @@
-const scriptURL = 'اhttps://docs.google.com/spreadsheets/d/1fbejIFpuPSTOZU3I8QsivtcT-hAuCP2J8SJlD2aIGAw/edit?usp=sharing';
+
 
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
@@ -950,7 +950,39 @@ const scriptURL = 'اhttps://docs.google.com/spreadsheets/d/1fbejIFpuPSTOZU3I8Qs
         // بارگذاری اولیه
         loadData();
         renderStudentsList();
-    </script>
+    </script> <!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>فرم حضور و غیاب</title>
+  <style>body{font-family:sans-serif;max-width:420px;margin:30px auto;text-align:right}input,select,button{width:100%;margin:6px 0;padding:8px;font-size:16px}</style>
+</head>
+<body>
+  <h2>فرم حضور و غیاب</h2>
+  <form id="attendanceForm">
+    <input type="text" name="name" placeholder="نام" required>
+    <input type="text" name="lastname" placeholder="نام خانوادگی" required>
+    <select name="grade" required><option value="اول">اول</option><option value="دوم">دوم</option></select>
+    <select name="class" required><option value="۱">۱</option><option value="۲">۲</option></select>
+    <input type="text" name="teacher" placeholder="معلم" required>
+    <button type="submit">ثبت</button>
+  </form>
+
+  <script>
+    const scriptURL = 'https://docs.google.com/spreadsheets/d/1fbejIFpuPSTOZU3I8QsivtcT-hAuCP2J8SJlD2aIGAw/edit?usp=sharing'; // <-- این را با لینک خودت عوض کن
+    const form = document.getElementById('attendanceForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(r => r.text().then(t => alert('پاسخ سرور: ' + t)))
+        .catch(err => { console.error(err); alert('خطا در ارسال — کنسول را چک کن'); });
+    });
+  </script>
 </body>
 </html>
+
+</body>
+</html>
+
 
