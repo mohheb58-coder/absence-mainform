@@ -270,6 +270,8 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
         }
         .date-picker-content {
             background: white;
@@ -277,6 +279,9 @@
             padding: 20px;
             max-width: 350px;
             width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: auto;
         }
         .date-picker-header {
             display: flex;
@@ -366,7 +371,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <img src="https://i.ibb.co/rGr1Fx6J/image.jpg" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
                 <h2 style="margin: 0; flex: 1; text-align: center;">حضور و غیاب مدرسه شهید نیاسری</h2>
-                <img src="https://i.ibb.co/rGr1Fx6J/image.jpg" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
+                <img src="https://i.ibb.co/LD1m3s5k/image.jpg" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
             </div>
             <div class="select-row">
                 <div class="form-group">
@@ -425,7 +430,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <img src="https://i.ibb.co/rGr1Fx6J/image.jpg" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
                 <h2 style="margin: 0; flex: 1; text-align: center;">گزارش غیبت امروز</h2>
-                <img src="https://i.ibb.co/rGr1Fx6J/image.jpg" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
+                <img src="https://i.ibb.co/LD1m3s5k/image.jpg" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
             </div>
             <div id="dailyReportDate" style="text-align: center; color: #FF6B6B; font-weight: bold; font-size: 16px; margin-bottom: 15px;"></div>
             <div id="dailyReportContent"></div>
@@ -567,7 +572,7 @@
 
     <script>
         // URL اسکریپت Google Apps Script
-        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxJig2TKLfOmMxgYmZCd0QtaDqdRBK-95p85cLRmMf1c_GmH9LEQu7X0XxiLDW9QW7AHg/exec';
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwCMGl2KwPtVmlJHX3o_-UhS2yxt3HaVTaybjkRuhiT0n6HDwxnqXZD1BgirU3M1MQ/exec';
         
         let students = [];
         let currentAbsent = new Set();
@@ -1241,5 +1246,4 @@
         }
     </script>
 </body>
-
 </html>
