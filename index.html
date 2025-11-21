@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سیستم حضور و غیاب مدرسه شهید نیاسری</title>
+    <title>سیستم حضور و غیاب مدرسه شهید نیاسری1</title>
     <style>
+        /* استایل‌ها همانند قبل */
         * {
             margin: 0;
             padding: 0;
@@ -396,6 +397,12 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.6);
         }
+        .auto-teacher {
+            background-color: #f0f8ff !important;
+            border: 2px solid #4ECDC4 !important;
+            color: #333 !important;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -456,7 +463,7 @@
                 <img src="https://i.ibb.co/rGr1Fx6J/image.jpg" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
                 <div style="flex: 1; text-align: center;">
                     <h1 style="margin: 0;">سیستم حضور و غیاب</h1>
-                    <h2 style="margin: 10px 0;">مدرسه شهید نیاسری</h2>
+                    <h2 style="margin: 10px 0;">مدرسه شهید نیاسری1</h2>
                 </div>
                 <img src="https://i.ibb.co/LD1m3s5k/image.jpg" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #FF6B9D; box-shadow: 0 5px 15px rgba(0,0,0,0.3); object-fit: cover;" alt="شهید حسن نیاسری">
             </div>
@@ -691,28 +698,32 @@
                 <label>نام خانوادگی:</label>
                 <input type="text" id="newStudentFamily">
             </div>
-            <div class="form-group">
-                <label>پایه:</label>
-                <select id="newStudentGrade">
-                    <option value="اول">اول</option>
-                    <option value="دوم">دوم</option>
-                    <option value="سوم">سوم</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>کلاس:</label>
-                <select id="newStudentClass">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
+            <div class="select-row">
+                <div class="form-group">
+                    <label>پایه:</label>
+                    <select id="newStudentGrade" onchange="updateTeacherName()">
+                        <option value="">انتخاب کنید</option>
+                        <option value="اول">اول</option>
+                        <option value="دوم">دوم</option>
+                        <option value="سوم">سوم</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>کلاس:</label>
+                    <select id="newStudentClass" onchange="updateTeacherName()">
+                        <option value="">انتخاب کنید</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label>معلم:</label>
-                <input type="text" id="newStudentTeacher" placeholder="نام معلم (اختیاری)">
+                <input type="text" id="newStudentTeacher" class="auto-teacher" placeholder="نام معلم به طور خودکار پر می‌شود" readonly>
             </div>
             <div id="addStudentMessage" class="hidden"></div>
             <div class="button-group">
@@ -733,6 +744,34 @@
         let currentDatePickerTarget = null;
         window.pendingDeletion = null;
 
+        // پایگاه داده معلمان برای هر پایه و کلاس
+        const teachersDatabase = {
+            'اول': {
+                '1': 'خانم زرگوش',
+                '2': 'خانم مرادیان',
+                '3': 'خانم نظری',
+                '4': 'آقای موسوی',
+                '5': 'خانم کریمی',
+                '6': 'خانم جعفری'
+            },
+            'دوم': {
+                '1': 'آقای رحیمی',
+                '2': 'آخانم شوقی',
+                '3': 'آقای امرائی',
+                '4': 'آقای دشتیان',
+                '5': 'آقای خالی',
+                '6': 'خانم خالی'
+            },
+            'سوم': {
+                '1': 'خانم پیرمیشانی',
+                '2': 'آقای بازوند',
+                '3': 'خانم نویدی',
+                '4': 'خانم فیضی',
+                '5': 'خانم موسوی',
+                '6': 'خانم تاجیک'
+            }
+        };
+
         // ماه‌های شمسی
         const persianMonths = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 
                               'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
@@ -742,18 +781,33 @@
 
         // تعطیلات رسمی
         const officialHolidays = [
-            '1403/01/01', '1403/01/02', '1403/01/03', '1403/01/04', // عید نوروز
-            '1403/01/12', '1403/01/13', // روز جمهوری اسلامی
-            '1403/03/14', '1403/03/15', // رحلت حضرت امام
-            '1403/04/14', // قیام 15 خرداد
-            '1403/06/03', '1403/06/04', // عید فطر
-            '1403/08/10', '1403/08/11', // عید قربان
-            '1403/08/18', // عید غدیر
-            '1403/10/20', // تاسوعا
-            '1403/10/21', // عاشورا
-            '1403/12/29', // شهادت پیامبر
-            '1404/01/01', '1404/01/02', '1404/01/03', '1404/01/04', // عید نوروز
+            '1403/01/01', '1403/01/02', '1403/01/03', '1403/01/04',
+            '1403/01/12', '1403/01/13',
+            '1403/03/14', '1403/03/15',
+            '1403/04/14',
+            '1403/06/03', '1403/06/04',
+            '1403/08/10', '1403/08/11',
+            '1403/08/18',
+            '1403/10/20',
+            '1403/10/21',
+            '1403/12/29',
+            '1404/01/01', '1404/01/02', '1404/01/03', '1404/01/04',
         ];
+
+        // تابع جدید: به‌روزرسانی خودکار نام معلم
+        function updateTeacherName() {
+            const grade = document.getElementById('newStudentGrade').value;
+            const classNum = document.getElementById('newStudentClass').value;
+            const teacherInput = document.getElementById('newStudentTeacher');
+            
+            if (grade && classNum && teachersDatabase[grade] && teachersDatabase[grade][classNum]) {
+                teacherInput.value = teachersDatabase[grade][classNum];
+                teacherInput.classList.add('auto-teacher');
+            } else {
+                teacherInput.value = '';
+                teacherInput.classList.remove('auto-teacher');
+            }
+        }
 
         // بررسی تعطیلی رسمی
         function isOfficialHoliday(date) {
@@ -856,7 +910,7 @@
         function isHoliday() {
             const now = new Date();
             const dayOfWeek = now.getDay();
-            return dayOfWeek === 4 || dayOfWeek === 5; // پنجشنبه = 4, جمعه = 5
+            return dayOfWeek === 4 || dayOfWeek === 5;
         }
 
         // ادامه به پنل معلم
@@ -952,6 +1006,13 @@
         function showAddStudent() {
             hideAll();
             document.getElementById('addStudentPanel').classList.remove('hidden');
+            // پاک کردن فیلدها هنگام نمایش
+            document.getElementById('newStudentName').value = '';
+            document.getElementById('newStudentFamily').value = '';
+            document.getElementById('newStudentGrade').value = '';
+            document.getElementById('newStudentClass').value = '';
+            document.getElementById('newStudentTeacher').value = '';
+            document.getElementById('newStudentTeacher').classList.remove('auto-teacher');
         }
 
         // نمایش پنل حذف دانش‌آموز
@@ -1200,7 +1261,7 @@
                 
                 if (result.success) {
                     alert('غیبت با موفقیت حذف شد ✅');
-                    loadDailyReport(); // بارگذاری مجدد گزارش
+                    loadDailyReport();
                 } else {
                     alert('خطا در حذف غیبت: ' + (result.message || 'خطای ناشناخته'));
                 }
@@ -1586,6 +1647,11 @@
                 return;
             }
 
+            if (!grade || !classNum) {
+                showMessage('addStudentMessage', 'لطفا پایه و کلاس را انتخاب کنید', 'error');
+                return;
+            }
+
             const result = await callAPI('addStudent', {
                 name: name,
                 family: family,
@@ -1599,9 +1665,13 @@
                 
                 students.push({name, family, grade, class: classNum, teacher});
                 
+                // پاک کردن فیلدها بعد از ثبت موفق
                 document.getElementById('newStudentName').value = '';
                 document.getElementById('newStudentFamily').value = '';
+                document.getElementById('newStudentGrade').value = '';
+                document.getElementById('newStudentClass').value = '';
                 document.getElementById('newStudentTeacher').value = '';
+                document.getElementById('newStudentTeacher').classList.remove('auto-teacher');
                 
                 setTimeout(() => {
                     document.getElementById('addStudentMessage').classList.add('hidden');
@@ -1763,7 +1833,7 @@
 
             // فراخوانی مجدد API برای دریافت جزئیات
             callAPI('advancedSearch', {
-                name: studentName.split(' ')[0], // فقط نام برای جستجوی دقیق‌تر
+                name: studentName.split(' ')[0],
                 grade: searchGrade || grade,
                 classNum: searchClass || classNum,
                 fromDate: searchFromDate,
@@ -1816,7 +1886,7 @@
 
         // بستن جزئیات
         function closeStudentDetails() {
-            filterSearchResults(); // بازگشت به لیست اصلی
+            filterSearchResults();
         }
 
         // بارگذاری اولیه نتایج
