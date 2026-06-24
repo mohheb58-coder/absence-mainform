@@ -3,6 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'IranNastaliq';
+            src: url('https://cdn.jsdelivr.net/gh/font-cdn/font@main/IranNastaliq.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/npm/persian-fonts@1.0.0/fonts/nastaliq/IranNastaliq.woff') format('woff');
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'BZar';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/b-zar-font@v4.1.1/BZar.woff2') format('woff2');
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Sahel';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/Sahel.woff2') format('woff2');
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Shabnam';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/Shabnam.woff2') format('woff2');
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Parastoo';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/parastoo-font@v4.0.2/dist/Parastoo.woff2') format('woff2');
+            font-display: swap;
+        }
+    </style>
     <title>سیستم حضور و غیاب مدرسه شهید نیاسری1</title>
     <style>
         /* استایل‌ها همانند قبل */
@@ -35,8 +66,8 @@
             max-width: 900px;
             width: 100%;
             border: 3px solid rgba(255, 255, 255, 0.5);
-            max-height: 90vh;
-            overflow-y: auto;
+            min-height: 200px;
+            overflow-y: visible;
         }
         h1, h2 {
             color: #FF6B6B;
@@ -403,7 +434,84 @@
             color: #333 !important;
             font-weight: bold;
         }
-    </style>
+    
+        /* ===== تقدیرنامه ===== */
+        .aw-page{
+            width:210mm; max-width:210mm;
+            min-height:270mm;
+            margin:10px auto 20px;
+            padding:15mm 22mm 15mm;
+            background:white;
+            border:3px solid #667eea;
+            border-radius:12px;
+            position:relative;
+            direction:rtl;
+            font-family:Tahoma,Arial,sans-serif;
+            page-break-after:always;
+            break-after:page;
+            page-break-inside:avoid;
+            break-inside:avoid;
+            box-sizing:border-box;
+            overflow:hidden;
+            background-size:100% 100%!important;
+            background-repeat:no-repeat!important;
+            display:flex;
+            flex-direction:column;
+        }
+        .aw-page.a5-size{
+            width:148mm; max-width:148mm;
+            min-height:205mm;
+            padding:12mm 18mm 12mm;
+        }
+        .aw-body-wrap{flex:1;}
+        .aw-c{position:absolute;width:22px;height:22px;border:3px solid #764ba2;}
+        .aw-tl{top:10px;right:10px;border-left:none;border-bottom:none;}
+        .aw-tr{top:10px;left:10px;border-right:none;border-bottom:none;}
+        .aw-bl{bottom:10px;right:10px;border-left:none;border-top:none;}
+        .aw-br{bottom:10px;left:10px;border-right:none;border-top:none;}
+        
+        
+        
+        
+        
+        .aw-body{font-size:14.5px;line-height:2.2;color:#333;text-align:justify;padding:6px 8px;word-break:keep-all;overflow-wrap:break-word;margin:0 2mm;}
+        .aw-school{text-align:center;color:#764ba2;font-size:13px;font-weight:bold;margin-bottom:6px;padding-top:4px;}
+        .aw-ico{text-align:center;font-size:40px;margin:4px 0;}
+        .aw-tit{text-align:center;font-size:30px;font-weight:900;color:#667eea;letter-spacing:3px;margin:4px 0;}
+        .aw-sub{text-align:center;font-size:12px;color:#aaa;margin-bottom:4px;}
+        .aw-div{width:60%;height:2px;background:linear-gradient(to left,transparent,#c0aaf0,transparent);margin:6px auto 10px;}
+        .aw-ft{margin-top:14px;padding-top:10px;border-top:1px dashed #ddd;}
+
+        .aw-body b{color:#764ba2;}
+        
+        
+        @media print{
+            *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+            body{background:white!important;padding:0!important;animation:none!important;margin:0!important;}
+            .container{box-shadow:none!important;border:none!important;max-height:none!important;
+                overflow:visible!important;padding:0!important;border-radius:0!important;max-width:100%!important;}
+            #awardPreview{display:block!important;}
+            #awardPreview>div:first-child{display:none!important;}
+            .aw-page{
+                margin:0 auto!important;
+                border-radius:0!important;
+                border:2px solid #667eea!important;
+                box-shadow:none!important;
+                page-break-inside:avoid!important;
+                break-inside:avoid!important;
+                page-break-after:always!important;
+                break-after:page!important;
+                overflow:hidden!important;
+                width:100%!important;
+                max-width:100%!important;
+            }
+            .aw-page.a5-size{width:100%!important;max-width:100%!important;}
+            #awardOut{padding:0!important;}
+        }
+        @page{size:A4;margin:6mm 8mm;}
+        @page.a5-page{size:A5;margin:4mm 6mm;}
+
+        </style>
 </head>
 <body>
     <!-- مودال تایید حذف -->
@@ -543,6 +651,7 @@
                 <button class="btn" onclick="showStatistics()">آمار و نمودار</button>
                 <button class="btn btn-success" onclick="showAddStudent()">اضافه کردن دانش‌آموز</button>
                 <button class="btn btn-danger" onclick="showDeleteStudent()">حذف دانش‌آموز</button>
+                <button class="btn" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 5px 15px rgba(102,126,234,0.4);" onclick="showAwardPanel()">🏅 تقدیرنامه</button>
                 <button class="btn btn-secondary btn-small" onclick="showHome()">خروج</button>
             </div>
         </div>
@@ -730,6 +839,272 @@
                 <button class="btn btn-success" onclick="addStudent()">ثبت</button>
                 <button class="btn btn-secondary btn-small" onclick="showManagerPanel()">بازگشت</button>
             </div>
+        </div>
+
+        <!-- ===== پنل تقدیرنامه ===== -->
+        <div id="awardPanel" class="hidden">
+            <h2 style="color:#667eea;text-align:center;">🏅 تقدیرنامه دانش‌آموزان</h2>
+
+            <!-- نوع تقدیرنامه -->
+            <div style="display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;">
+                <button id="awt0" onclick="setAwType(0)" style="flex-shrink:0;padding:9px 14px;border:2px solid #667eea;border-radius:20px;background:#667eea;color:white;font-family:Tahoma;font-size:13px;font-weight:bold;cursor:pointer;">📚 درسی</button>
+                <button id="awt1" onclick="setAwType(1)" style="flex-shrink:0;padding:9px 14px;border:2px solid #ddd;border-radius:20px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">🏅 ورزشی</button>
+                <button id="awt2" onclick="setAwType(2)" style="flex-shrink:0;padding:9px 14px;border:2px solid #ddd;border-radius:20px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">🎨 هنری</button>
+                <button id="awt3" onclick="setAwType(3)" style="flex-shrink:0;padding:9px 14px;border:2px solid #ddd;border-radius:20px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">🌟 اخلاقی</button>
+                <button id="awt4" onclick="setAwType(4)" style="flex-shrink:0;padding:9px 14px;border:2px solid #ddd;border-radius:20px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">✏️ دلخواه</button>
+            </div>
+
+            <!-- انتخاب عنوان سند -->
+            <div style="background:#fff8f0;border-radius:12px;padding:12px 14px;margin-bottom:12px;border:2px solid #ffd9b0;">
+                <label style="font-weight:bold;color:#e67e22;font-size:14px;display:block;margin-bottom:8px;">📋 عنوان سند:</label>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+                    <button id="atl0" onclick="setAwTitle(0)" style="padding:8px 14px;border:2px solid #e67e22;border-radius:16px;background:#e67e22;color:white;font-family:Tahoma;font-size:13px;font-weight:bold;cursor:pointer;">🏅 تقدیرنامه</button>
+                    <button id="atl1" onclick="setAwTitle(1)" style="padding:8px 14px;border:2px solid #ddd;border-radius:16px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">📢 اطلاعیه</button>
+                    <button id="atl2" onclick="setAwTitle(2)" style="padding:8px 14px;border:2px solid #ddd;border-radius:16px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">📜 گواهی</button>
+                    <button id="atl3" onclick="setAwTitle(3)" style="padding:8px 14px;border:2px solid #ddd;border-radius:16px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">✏️ دلخواه</button>
+                </div>
+                <input type="text" id="awTitleCustom" value="تقدیرنامه" style="display:none;width:100%;padding:8px;border:1.5px solid #ffd9b0;border-radius:8px;font-family:Tahoma;font-size:15px;text-align:center;box-sizing:border-box;font-weight:bold;" placeholder="عنوان دلخواه...">
+            </div>
+
+            <div style="background:#f8f6ff;border-radius:14px;padding:14px;margin-bottom:14px;border:2px solid #e0d9ff;">
+
+                <!-- ردیف ۱: پایه و کلاس -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+                    <div class="form-group" style="margin:0;"><label>پایه:</label>
+                        <select id="awGrade" onchange="loadAwStudents()">
+                            <option value="">همه</option><option value="اول">اول</option><option value="دوم">دوم</option><option value="سوم">سوم</option>
+                        </select></div>
+                    <div class="form-group" style="margin:0;"><label>کلاس:</label>
+                        <select id="awClass" onchange="loadAwStudents()">
+                            <option value="">همه</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                        </select></div>
+                </div>
+
+                <!-- ردیف ۲: موضوع -->
+                <div class="form-group" style="margin-bottom:10px;">
+                    <label id="awSubLbl">📚 موضوع / درس:</label>
+                    <input type="text" id="awSubject" value="برتری درسی" oninput="updateAwPreview()">
+                </div>
+
+                <!-- ردیف ۳: متن آماده یا دلخواه -->
+                <div class="form-group" style="margin-bottom:10px;">
+                    <label>📝 متن تقدیرنامه:</label>
+                    <div style="display:flex;gap:8px;margin-bottom:8px;">
+                        <button id="awTxtPre" onclick="setAwTxtMode(0)" style="flex:1;padding:9px;border:2px solid #667eea;border-radius:10px;background:#667eea;color:white;font-family:Tahoma;font-size:13px;font-weight:bold;cursor:pointer;">✅ متن آماده</button>
+                        <button id="awTxtCus" onclick="setAwTxtMode(1)" style="flex:1;padding:9px;border:2px solid #ddd;border-radius:10px;background:white;color:#555;font-family:Tahoma;font-size:13px;cursor:pointer;">✏️ متن دلخواه</button>
+                    </div>
+                    <div id="awPreview" style="background:white;border:1.5px solid #e0d9ff;border-radius:10px;padding:12px;font-size:13px;color:#444;line-height:2.2;direction:rtl;"></div>
+
+                    <!-- ویرایشگر متن دلخواه -->
+                    <div id="awEditorWrap" style="display:none;border:1.5px solid #ddd;border-radius:10px;overflow:hidden;">
+                        <!-- نوار ابزار -->
+                        <div style="background:#f0eeff;padding:6px 8px;display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid #ddd;align-items:center;">
+                            <!-- Bold / Italic / Underline -->
+                            <button type="button" onclick="awCmd('bold')" title="بولد" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;font-weight:bold;cursor:pointer;font-size:14px;">B</button>
+                            <button type="button" onclick="awCmd('italic')" title="ایتالیک" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;font-style:italic;cursor:pointer;font-size:14px;">I</button>
+                            <button type="button" onclick="awCmd('underline')" title="زیرخط" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;text-decoration:underline;cursor:pointer;font-size:14px;">U</button>
+
+                            <div style="width:1px;height:24px;background:#ccc;margin:0 2px;"></div>
+
+                            <!-- رنگ متن -->
+                            <label title="رنگ متن" style="display:flex;align-items:center;gap:2px;font-size:12px;cursor:pointer;">
+                                <span style="font-size:13px;">🎨</span>
+                                <input type="color" id="awTxtColor" value="#000000" onchange="awCmd('foreColor',this.value)" style="width:24px;height:24px;padding:0;border:1px solid #ccc;border-radius:4px;cursor:pointer;">
+                            </label>
+
+                            <!-- رنگ پس‌زمینه متن -->
+                            <label title="هایلایت" style="display:flex;align-items:center;gap:2px;font-size:12px;cursor:pointer;">
+                                <span style="font-size:13px;">🖊</span>
+                                <input type="color" id="awHlColor" value="#ffff00" onchange="awCmd('hiliteColor',this.value)" style="width:24px;height:24px;padding:0;border:1px solid #ccc;border-radius:4px;cursor:pointer;">
+                            </label>
+
+                            <div style="width:1px;height:24px;background:#ccc;margin:0 2px;"></div>
+
+                            <!-- سایز فونت -->
+                            <select onchange="awCmdVal('fontSize',this.value);this.value=''" style="height:30px;border:1px solid #ccc;border-radius:6px;padding:0 4px;font-family:Tahoma;font-size:12px;cursor:pointer;">
+                                <option value="">سایز</option>
+                                <option value="1">۸</option>
+                                <option value="2">۱۰</option>
+                                <option value="3">۱۲</option>
+                                <option value="4">۱۴</option>
+                                <option value="5">۱۸</option>
+                                <option value="6">۲۴</option>
+                                <option value="7">۳۲</option>
+                            </select>
+
+                            <!-- فونت -->
+                            <select onchange="awCmdVal('fontName',this.value);this.value=''" style="height:30px;border:1px solid #ccc;border-radius:6px;padding:0 4px;font-family:Tahoma;font-size:12px;cursor:pointer;">
+                                <option value="">فونت</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+
+                            <div style="width:1px;height:24px;background:#ccc;margin:0 2px;"></div>
+
+                            <!-- تراز -->
+                            <button type="button" onclick="awCmd('justifyRight')" title="راست‌چین" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;font-size:15px;">⇥</button>
+                            <button type="button" onclick="awCmd('justifyCenter')" title="وسط‌چین" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;font-size:15px;">≡</button>
+                            <button type="button" onclick="awCmd('justifyLeft')" title="چپ‌چین" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;font-size:15px;">⇤</button>
+                            <button type="button" onclick="awCmd('justifyFull')" title="justify" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;font-size:15px;">☰</button>
+
+                            <div style="width:1px;height:24px;background:#ccc;margin:0 2px;"></div>
+
+                            <!-- لیست -->
+                            <button type="button" onclick="awCmd('insertUnorderedList')" title="لیست نقطه‌ای" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;font-size:14px;">•≡</button>
+                            <button type="button" onclick="awCmd('insertOrderedList')" title="لیست شماره‌دار" style="width:30px;height:30px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;font-size:14px;">1≡</button>
+
+                            <div style="width:1px;height:24px;background:#ccc;margin:0 2px;"></div>
+
+                            <!-- متغیرها -->
+                            <button type="button" onclick="awInsert('[نام]')" title="نام دانش‌آموز" style="height:30px;padding:0 8px;border:1px solid #667eea;border-radius:6px;background:#f0eeff;color:#667eea;cursor:pointer;font-family:Tahoma;font-size:12px;font-weight:bold;">+نام</button>
+                            <button type="button" onclick="awInsert('[پایه]')" title="پایه دانش‌آموز" style="height:30px;padding:0 8px;border:1px solid #667eea;border-radius:6px;background:#f0eeff;color:#667eea;cursor:pointer;font-family:Tahoma;font-size:12px;font-weight:bold;">+پایه</button>
+
+                            <!-- پاک کردن -->
+                            <button type="button" onclick="awCmd('removeFormat')" title="پاک کردن فرمت" style="width:30px;height:30px;border:1px solid #e74c3c;border-radius:6px;background:white;color:#e74c3c;cursor:pointer;font-size:13px;">✕</button>
+                        </div>
+
+                        <!-- محل نوشتن -->
+                        <div id="awRichEditor"
+                            contenteditable="true"
+                            dir="rtl"
+                            style="min-height:120px;max-height:220px;overflow-y:auto;padding:12px 14px;font-family:Tahoma;font-size:14px;line-height:2;direction:rtl;text-align:right;outline:none;background:white;">
+                            <p>متن دلخواه را اینجا بنویسید...<br>از دکمه‌های <b style="color:#667eea;">+نام</b> و <b style="color:#667eea;">+پایه</b> برای درج نام و پایه دانش‌آموز استفاده کنید.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ردیف ۴: نوع کاغذ + فونت -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+                    <div class="form-group" style="margin:0;">
+                        <label>📄 اندازه کاغذ:</label>
+                        <select id="awPaper" onchange="updateAwPreview()">
+                            <option value="A4">A4 (عمودی)</option>
+                            <option value="A5">A5 (نصف A4)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin:0;">
+                        <label>🔤 نوع فونت:</label>
+                        <select id="awFont" onchange="updateAwPreview()">
+                            <option value="Tahoma">Tahoma (پیش‌فرض)</option>
+                            <option value="Vazirmatn">🔤 وزیرمتن</option>
+                            <option value="Shabnam">🔤 شبنم</option>
+                            <option value="Sahel">🔤 ساحل</option>
+                            <option value="Parastoo">🔤 پرستو</option>
+                            <option value="Amiri">🖊 امیری (نستعلیق‌وار)</option>
+                            <option value="'Scheherazade New'">🖊 شهرزاد نو (نستعلیق)</option>
+                            <option value="BZar">🖊 ب‌زر (کلاسیک)</option>
+                            <option value="'B Nazanin',Tahoma">ب نازنین</option>
+                            <option value="Arial">Arial</option>
+                            <option value="'Times New Roman'">Times New Roman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ردیف ۵: سایز فونت متن و عنوان -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+                    <div class="form-group" style="margin:0;">
+                        <label>حجم متن: <span id="awFszV">14</span>px</label>
+                        <input type="range" id="awFsz" min="10" max="22" value="14" oninput="document.getElementById('awFszV').textContent=this.value;updateAwPreview()" style="width:100%;accent-color:#667eea;">
+                    </div>
+                    <div class="form-group" style="margin:0;">
+                        <label>حجم عنوان: <span id="awTszV">30</span>px</label>
+                        <input type="range" id="awTsz" min="18" max="48" value="30" oninput="document.getElementById('awTszV').textContent=this.value;updateAwPreview()" style="width:100%;accent-color:#667eea;">
+                    </div>
+                </div>
+
+                <!-- ردیف ۶: تاریخ و مدیر -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
+                    <div class="form-group" style="margin:0;"><label>📅 تاریخ:</label><input type="text" id="awDate"></div>
+                    <div class="form-group" style="margin:0;"><label>🖊️ نام مدیر:</label><input type="text" id="awMgr" value="محمد حیدری"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+                    <div class="form-group" style="margin:0;">
+                        <label>🔢 شماره (اختیاری):</label>
+                        <input type="text" id="awDocNum" placeholder="مثال: ۱۴۱۰۳" value="۱۴۱۰۳">
+                    </div>
+                    <div class="form-group" style="margin:0;">
+                        <label>نمایش شماره:</label>
+                        <select id="awShowNum">
+                            <option value="1">✅ بله</option>
+                            <option value="0">❌ خیر</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ردیف ۷: بک‌گراند -->
+                <div class="form-group" style="margin-bottom:12px;">
+                    <label>🖼️ تصویر پس‌زمینه (اختیاری):</label>
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                        <input type="file" id="awBgF" accept="image/*" onchange="loadAwImg(event,'bg')" style="font-size:12px;flex:1;min-width:0;">
+                        <span id="awBgSt" style="font-size:12px;color:#aaa;white-space:nowrap;">انتخاب نشده</span>
+                        <button onclick="clearAwBg()" style="background:#e74c3c;color:white;border:none;padding:6px 12px;border-radius:8px;font-family:Tahoma;font-size:12px;cursor:pointer;white-space:nowrap;">✕ حذف</button>
+                    </div>
+                    <div style="margin-top:6px;display:flex;align-items:center;gap:8px;">
+                        <label style="font-size:12px;margin:0;">پوشش سفید روی تصویر: <span id="awBgOpV">10</span>%</label>
+                        <input type="range" id="awBgOp" min="0" max="90" value="10" oninput="document.getElementById('awBgOpV').textContent=this.value" style="flex:1;accent-color:#667eea;">
+                    </div>
+                </div>
+
+                <!-- ردیف ۸: مهر و امضا -->
+                <div style="background:white;border-radius:10px;padding:12px;border:1.5px solid #e0d9ff;">
+                    <div style="font-weight:bold;color:#667eea;margin-bottom:10px;font-size:14px;">🔴 مهر و امضا</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+                        <div>
+                            <label style="font-size:13px;display:block;margin-bottom:4px;">تصویر مهر (PNG):</label>
+                            <input type="file" id="awStampF" accept="image/*" onchange="loadAwImg(event,'stamp')" style="font-size:12px;width:100%;">
+                            <span id="awStampSt" style="font-size:12px;color:#aaa;">انتخاب نشده</span>
+                            <div style="margin-top:6px;">
+                                <label style="font-size:12px;">اندازه مهر: <span id="awStampSzV">90</span>px</label>
+                                <input type="range" id="awStampSz" min="50" max="180" value="90" oninput="document.getElementById('awStampSzV').textContent=this.value" style="width:100%;accent-color:#667eea;">
+                            </div>
+                        </div>
+                        <div>
+                            <label style="font-size:13px;display:block;margin-bottom:4px;">تصویر امضا (PNG):</label>
+                            <input type="file" id="awSigF" accept="image/*" onchange="loadAwImg(event,'sig')" style="font-size:12px;width:100%;">
+                            <span id="awSigSt" style="font-size:12px;color:#aaa;">انتخاب نشده</span>
+                            <div style="margin-top:6px;">
+                                <label style="font-size:12px;">عرض امضا: <span id="awSigSzV">150</span>px</label>
+                                <input type="range" id="awSigSz" min="80" max="250" value="150" oninput="document.getElementById('awSigSzV').textContent=this.value" style="width:100%;accent-color:#667eea;">
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="clearAwImgs()" style="background:#e74c3c;color:white;border:none;padding:6px 14px;border-radius:8px;font-family:Tahoma;font-size:12px;cursor:pointer;">🗑 پاک کردن مهر و امضا</button>
+                </div>
+            </div>
+
+            <!-- لیست دانش‌آموزان -->
+            <div style="margin-bottom:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px;">
+                    <b id="awCntLbl" style="color:#667eea;">لیست دانش‌آموزان</b>
+                    <div style="display:flex;gap:6px;">
+                        <button onclick="awSelAll(true)" style="background:#11998e;color:white;border:none;padding:8px 16px;border-radius:20px;font-family:Tahoma;font-size:13px;cursor:pointer;">✅ انتخاب همه</button>
+                        <button onclick="awSelAll(false)" style="background:#e74c3c;color:white;border:none;padding:8px 16px;border-radius:20px;font-family:Tahoma;font-size:13px;cursor:pointer;">❌ لغو همه</button>
+                    </div>
+                </div>
+                <div id="awList" style="max-height:260px;overflow-y:auto;border:1.5px solid #e0d9ff;border-radius:12px;background:white;padding:8px;"></div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;" onclick="makeAwards()">📄 ایجاد تقدیرنامه‌ها</button>
+                <button class="btn btn-secondary btn-small" onclick="showManagerPanel()">بازگشت</button>
+            </div>
+        </div>
+
+        <!-- ===== پیش‌نمایش تقدیرنامه‌ها ===== -->
+        <div id="awardPreview" class="hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+                <h2 style="color:#667eea;margin:0;">📄 تقدیرنامه‌ها</h2>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <button onclick="window.print()" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:12px 18px;border-radius:20px;font-family:Tahoma;font-weight:bold;cursor:pointer;font-size:14px;">🖨️ چاپ</button>
+                    <button onclick="saveAsPDF()" style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:white;border:none;padding:12px 18px;border-radius:20px;font-family:Tahoma;font-weight:bold;cursor:pointer;font-size:14px;">📥 ذخیره PDF</button>
+                    <button onclick="shareToShad()" style="background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;border:none;padding:12px 18px;border-radius:20px;font-family:Tahoma;font-weight:bold;cursor:pointer;font-size:14px;">📱 ارسال به شاد</button>
+                    <button onclick="showAwardPanel(true)" style="background:#4ECDC4;color:white;border:none;padding:12px 18px;border-radius:20px;font-family:Tahoma;font-weight:bold;cursor:pointer;font-size:14px;">← تنظیمات</button>
+                    <button onclick="showManagerPanel()" style="background:#95a5a6;color:white;border:none;padding:12px 18px;border-radius:20px;font-family:Tahoma;font-weight:bold;cursor:pointer;font-size:14px;">🏠 پنل مدیر</button>
+                </div>
+            </div>
+            <div id="awardOut" style="padding:4px 0;"></div>
         </div>
     </div>
 
@@ -1024,6 +1399,7 @@
 
         // مخفی کردن تمام صفحات
         function hideAll() {
+            ['awardPanel','awardPreview'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.add('hidden');});
             const pages = ['homePage', 'managerLogin', 'teacherPanel', 'managerPanel', 
                           'dailyReport', 'fullReport', 'searchPanel', 'addStudentPanel', 
                           'statisticsPanel', 'deleteStudentPanel'];
@@ -1896,6 +2272,475 @@
         
         // نمایش صفحه اصلی هنگام بارگذاری
         document.addEventListener('DOMContentLoaded', showHome);
-    </script>
+    
+        // ========== تقدیرنامه ==========
+        var awSL = [];
+        var awChecked = {}; // حفظ وضعیت انتخاب
+        var awTypeIdx = 0;
+        var awTxtMode = 0;
+        var awStampSrc = null;
+        var awSigSrc = null;
+        var awBgSrc = null;
+
+        var awCfg = [
+            {icon:'📚', sub:'بخش آموزشی', lbl:'📚 موضوع / درس:', def:'برتری درسی',
+             txt:function(n,g,s){return 'دانش‌آموز عزیز <b>'+n+'</b>،<br>دانش‌آموز پایه <b>'+g+'</b> دبستان شهید نیاسری ۱،<br>به پاس تلاش پیوسته، پشتکار و کوشش ارزشمند در درس <b>'+s+'</b> و کسب نتایج درخشان، شایسته تقدیر و تجلیل می‌باشید.<br>امیدواریم همواره در مسیر علم و دانش گام برداشته و مایه افتخار خانواده و مدرسه باشید.';}},
+            {icon:'🏅', sub:'بخش تربیت بدنی', lbl:'🏅 رشته ورزشی:', def:'ورزش عمومی',
+             txt:function(n,g,s){return 'دانش‌آموز عزیز <b>'+n+'</b>،<br>دانش‌آموز پایه <b>'+g+'</b> دبستان شهید نیاسری ۱،<br>به پاس تلاش، پشتکار و روحیه ورزشی برجسته در رشته <b>'+s+'</b>، شایسته تقدیر و تجلیل می‌باشید.<br>امیدواریم همواره در مسیر سلامت و پیشرفت ورزشی گام برداشته و الگوی دیگران باشید.';}},
+            {icon:'🎨', sub:'بخش هنر و خلاقیت', lbl:'🎨 رشته هنری:', def:'نقاشی',
+             txt:function(n,g,s){return 'دانش‌آموز عزیز <b>'+n+'</b>،<br>دانش‌آموز پایه <b>'+g+'</b> دبستان شهید نیاسری ۱،<br>به پاس خلاقیت، ذوق هنری و تلاش ارزشمند در زمینه <b>'+s+'</b>، شایسته تقدیر و تجلیل می‌باشید.<br>امیدواریم این استعداد درخشان را همواره شکوفا سازید.';}},
+            {icon:'🌟', sub:'بخش پرورشی', lbl:'🌟 موضوع تقدیر:', def:'رفتار نمونه',
+             txt:function(n,g,s){return 'دانش‌آموز عزیز <b>'+n+'</b>،<br>دانش‌آموز پایه <b>'+g+'</b> دبستان شهید نیاسری ۱،<br>به پاس اخلاق نیکو، رفتار پسندیده و نمونه بودن در زمینه <b>'+s+'</b>، شایسته تقدیر و تجلیل می‌باشید.<br>امیدواریم همواره چراغ راه دیگران باشید.';}},
+            {icon:'🎖️', sub:'دبستان شهید نیاسری ۱', lbl:'✏️ عنوان:', def:'تقدیر ویژه',
+             txt:function(n,g,s){return 'دانش‌آموز عزیز <b>'+n+'</b>،<br>به پاس تلاش و کوشش ارزشمند، شایسته تقدیر و تجلیل می‌باشید.';}}
+        ];
+
+        var awTitleIdx = 0;
+        var awTitleList = ['تقدیرنامه', 'اطلاعیه', 'گواهی', ''];
+
+        function setAwTitle(i){
+            awTitleIdx = i;
+            for(var j=0;j<4;j++){
+                var b=document.getElementById('atl'+j);if(!b)continue;
+                b.style.background=j===i?'#e67e22':'white';
+                b.style.color=j===i?'white':'#555';
+                b.style.borderColor=j===i?'#e67e22':'#ddd';
+            }
+            var cu=document.getElementById('awTitleCustom');
+            if(i===3){
+                cu.style.display='block';
+                cu.focus();
+            } else {
+                cu.style.display='none';
+                cu.value=awTitleList[i];
+            }
+        }
+
+        function getAwTitle(){
+            if(awTitleIdx===3) return document.getElementById('awTitleCustom').value.trim()||'عنوان';
+            return awTitleList[awTitleIdx];
+        }
+
+        function setAwType(i){
+            awTypeIdx=i;
+            for(var j=0;j<5;j++){
+                var b=document.getElementById('awt'+j);if(!b)continue;
+                b.style.background=j===i?'#667eea':'white';
+                b.style.color=j===i?'white':'#555';
+                b.style.borderColor=j===i?'#667eea':'#ddd';
+            }
+            document.getElementById('awSubLbl').textContent=awCfg[i].lbl;
+            document.getElementById('awSubject').value=awCfg[i].def;
+            updateAwPreview();
+        }
+
+        function setAwTxtMode(m){
+            awTxtMode=m;
+            var pre=document.getElementById('awTxtPre');
+            var cus=document.getElementById('awTxtCus');
+            var prev=document.getElementById('awPreview');
+            var ed=document.getElementById('awEditorWrap');
+            if(m===0){
+                pre.style.background='#667eea';pre.style.color='white';pre.style.borderColor='#667eea';
+                cus.style.background='white';cus.style.color='#555';cus.style.borderColor='#ddd';
+                prev.style.display='block';ed.style.display='none';
+                updateAwPreview();
+            }else{
+                cus.style.background='#667eea';cus.style.color='white';cus.style.borderColor='#667eea';
+                pre.style.background='white';pre.style.color='#555';pre.style.borderColor='#ddd';
+                prev.style.display='none';ed.style.display='block';
+                setTimeout(function(){document.getElementById('awRichEditor').focus();},100);
+            }
+        }
+
+        function updateAwPreview(){
+            var sub=document.getElementById('awSubject').value||awCfg[awTypeIdx].def;
+            document.getElementById('awPreview').innerHTML=awCfg[awTypeIdx].txt('نام دانش‌آموز','پایه',sub);
+        }
+
+        function loadAwImg(e,type){
+            var f=e.target.files[0];if(!f)return;
+            var r=new FileReader();
+            r.onload=function(ev){
+                if(type==='stamp'){
+                    awStampSrc=ev.target.result;
+                    document.getElementById('awStampSt').textContent='✅ بارگذاری شد';
+                    document.getElementById('awStampSt').style.color='#11998e';
+                } else if(type==='sig'){
+                    awSigSrc=ev.target.result;
+                    document.getElementById('awSigSt').textContent='✅ بارگذاری شد';
+                    document.getElementById('awSigSt').style.color='#11998e';
+                } else if(type==='bg'){
+                    awBgSrc=ev.target.result;
+                    document.getElementById('awBgSt').textContent='✅ بارگذاری شد';
+                    document.getElementById('awBgSt').style.color='#11998e';
+                }
+            };
+            r.readAsDataURL(f);
+        }
+
+        function clearAwImgs(){
+            awStampSrc=null;awSigSrc=null;
+            document.getElementById('awStampF').value='';
+            document.getElementById('awSigF').value='';
+            document.getElementById('awStampSt').textContent='انتخاب نشده';
+            document.getElementById('awStampSt').style.color='#aaa';
+            document.getElementById('awSigSt').textContent='انتخاب نشده';
+            document.getElementById('awSigSt').style.color='#aaa';
+        }
+
+        function clearAwBg(){
+            awBgSrc=null;
+            document.getElementById('awBgF').value='';
+            document.getElementById('awBgSt').textContent='انتخاب نشده';
+            document.getElementById('awBgSt').style.color='#aaa';
+        }
+
+        function getTodayPersian(){
+            try {
+                var d = new Date();
+                var opts = {calendar:'persian', numberingSystem:'latn', year:'numeric', month:'2-digit', day:'2-digit'};
+                var parts = new Intl.DateTimeFormat('fa-IR-u-ca-persian-nu-latn', opts).formatToParts(d);
+                var y='',m='',day='';
+                parts.forEach(function(p){
+                    if(p.type==='year') y=p.value;
+                    else if(p.type==='month') m=p.value.padStart(2,'0');
+                    else if(p.type==='day') day=p.value.padStart(2,'0');
+                });
+                return y+'/'+m+'/'+day;
+            } catch(e) {
+                // fallback ساده
+                var now = new Date();
+                var y = now.getFullYear()-621;
+                var m = String(now.getMonth()+1).padStart(2,'0');
+                var d = String(now.getDate()).padStart(2,'0');
+                return y+'/'+m+'/'+d;
+            }
+        }
+
+        function toFarsiNum(n){
+            return String(n).replace(/[0-9]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d];});
+        }
+
+        async function showAwardPanel(keepSettings){
+            hideAll();
+            document.getElementById('awardPanel').classList.remove('hidden');
+            if(!keepSettings){
+                document.getElementById('awDate').value=getTodayPersian();
+                awChecked = {}; // ریست انتخاب‌ها فقط اولین بار
+            }
+            if(!students||students.length===0){
+                document.getElementById('awCntLbl').textContent='⏳ در حال بارگذاری...';
+                await fetchStudents();
+            }
+            loadAwStudents(); // awChecked حفظ میشه
+            if(!keepSettings){
+                setAwType(awTypeIdx);
+                setAwTxtMode(awTxtMode);
+            }
+        }
+
+
+
+        function loadAwStudents(){
+            var gr=document.getElementById('awGrade').value;
+            var cl=document.getElementById('awClass').value;
+            awSL=students.filter(function(s){return(!gr||s.grade===gr)&&(!cl||String(s.class)===String(cl));});
+            awSL.sort(function(a,b){
+                var fa=a.family||''; var fb=b.family||'';
+                return fa.localeCompare(fb,'fa');
+            });
+            document.getElementById('awCntLbl').textContent=awSL.length+' دانش‌آموز';
+            var list=document.getElementById('awList');
+            if(awSL.length===0){list.innerHTML='<p style="text-align:center;color:#aaa;padding:20px;">دانش‌آموزی یافت نشد</p>';return;}
+            var html='';
+            for(var i=0;i<awSL.length;i++){
+                var s=awSL[i];
+                var key=s.name+'_'+s.family;
+                var chk=(awChecked[key]===true)?'checked':'';
+                html+='<label style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;cursor:pointer;margin-bottom:5px;background:#f8f6ff;border:1.5px solid #e8e0ff;">'
+                    +'<input type="checkbox" data-key="'+key+'" '+chk+' style="width:20px;height:20px;accent-color:#667eea;cursor:pointer;flex-shrink:0;">'
+                    +'<span style="font-weight:700;font-size:14px;">'+s.name+' '+s.family+'</span>'
+                    +'<span style="margin-right:auto;font-size:12px;color:#aaa;white-space:nowrap;">پایه '+s.grade+' - '+s.class+'</span>'
+                    +'</label>';
+            }
+            list.innerHTML=html;
+            // event listener برای checkboxها
+            list.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+                cb.addEventListener('change',function(){
+                    awChecked[this.getAttribute('data-key')]=this.checked;
+                });
+            });
+        }
+
+        function awCmd(cmd, val){
+            document.getElementById('awRichEditor').focus();
+            document.execCommand(cmd, false, val||null);
+        }
+        function awCmdVal(cmd, val){
+            if(!val) return;
+            document.getElementById('awRichEditor').focus();
+            document.execCommand(cmd, false, val);
+        }
+        function awInsert(text){
+            var ed = document.getElementById('awRichEditor');
+            ed.focus();
+            var sel = window.getSelection();
+            if(sel.rangeCount){
+                var range = sel.getRangeAt(0);
+                range.deleteContents();
+                range.insertNode(document.createTextNode(text));
+                range.collapse(false);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            } else {
+                ed.innerHTML += text;
+            }
+        }
+
+        function awSelAll(v){
+            var list=document.getElementById('awList');
+            list.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+                cb.checked=v;
+                awChecked[cb.getAttribute('data-key')]=v;
+            });
+        }
+
+        function makeAwards(){
+            var cfg=awCfg[awTypeIdx];
+            var sub=toFarsiNum(document.getElementById('awSubject').value.trim()||cfg.def);
+            var date=toFarsiNum(document.getElementById('awDate').value.trim());
+            var mgr=document.getElementById('awMgr').value.trim()||'مدیر مدرسه';
+            var docNum=toFarsiNum(document.getElementById('awDocNum').value.trim());
+            var showNum=document.getElementById('awShowNum').value==='1';
+            var customTxt=awTxtMode===1?document.getElementById('awRichEditor').innerHTML:'';
+            var paper=document.getElementById('awPaper').value;
+            var font=document.getElementById('awFont').value;
+            var fsz=document.getElementById('awFsz').value;
+            var tsz=document.getElementById('awTsz').value;
+            var bgOp=document.getElementById('awBgOp').value/100;
+
+            var sel=awSL.filter(function(s){var key=s.name+'_'+s.family;return awChecked[key]===true;});
+            if(sel.length===0){alert('لطفاً حداقل یک دانش‌آموز انتخاب کنید.');return;}
+
+            // اندازه کاغذ
+            // اندازه در CSS کلاس aw-page و a5-size تعریف شده
+
+            var stampSz = document.getElementById('awStampSz').value;
+            var sigSz = document.getElementById('awSigSz').value;
+
+            // بک‌گراند
+            // بک‌گراند: CSS inline روی خود div - مطمئن‌ترین روش
+            var bgLayer = '';
+            var bgStyle = awBgSrc
+                ? 'background-image:url('+awBgSrc+');background-size:100% 100%;background-position:center center;background-repeat:no-repeat;'
+                : '';
+
+            // شماره صفحه (تاریخ فارسی + شماره)
+            var farsiDate = toFarsiNum(date);
+
+            var html=sel.map(function(s, idx){
+                var nm=s.name+' '+s.family;
+                var body=awTxtMode===1&&customTxt
+                    ?customTxt.replace(/\[نام\]/g,'<b>'+nm+'</b>').replace(/\[پایه\]/g,'<b>'+s.grade+'</b>')
+                    :cfg.txt(nm,s.grade,sub);
+
+                // footer: امضا → خط → مهر → نام مدیر، همه وسط
+                var footerBlock =
+                    '<div style="text-align:center;margin:0 auto;">'
+                    +(awSigSrc
+                        ?'<img src="'+awSigSrc+'" style="width:'+sigSz+'px;max-height:80px;object-fit:contain;display:block;margin:0 auto 4px;opacity:0.92;">'
+                        :'<div style="height:50px;"></div>')
+                    +''
+                    +(awStampSrc
+                        ?'<img src="'+awStampSrc+'" style="width:'+stampSz+'px;height:'+stampSz+'px;object-fit:contain;display:block;margin:0 auto 6px;opacity:0.92;">'
+                        :'')
+                    +'<div style="font-weight:bold;color:#764ba2;font-size:13px;">مدیر دبستان شهید نیاسری ۱</div>'
+                    +'<div style="font-size:12px;font-weight:bold;color:#333;margin-top:2px;">'+mgr+'</div>'
+                    +'</div>';
+
+                var pgClass = paper==='A5' ? 'aw-page a5-size' : 'aw-page';
+
+                // تاریخ بیرون از کادر - زیر کادر سمت چپ
+                // تاریخ و شماره - draggable داخل کادر
+                var dateHtml = (showNum && docNum ? '<div style="font-size:11px;color:#555;margin-top:2px;">شماره: '+docNum+'</div>' : '');
+
+                return '<div style="margin:0 auto 32px;max-width:700px;">'
+                    + '<div class="' + pgClass + '" style="font-family:' + font + ';' + bgStyle + '">'
+                    + (awBgSrc ? '<div style="position:absolute;inset:0;background:rgba(255,255,255,' + bgOp + ');pointer-events:none;z-index:0;border-radius:10px;"></div>' : '')
+                    + '<div id="datebox-'+idx+'" style="position:absolute;top:14px;left:16px;z-index:10;cursor:move;user-select:none;background:rgba(255,255,255,0.85);padding:4px 8px;border-radius:6px;border:1px dashed #aaa;" onmousedown="awDragStart(event,this)" ontouchstart="awDragStart(event,this)"><div style="font-size:12px;font-weight:bold;color:#333;">'+farsiDate+'</div>'+dateHtml+'</div>'
+                    + '<div style="position:relative;z-index:1;display:flex;flex-direction:column;height:100%;">'
+                    + '<div class="aw-school">دبستان شهید نیاسری ۱</div>'
+                    + '<div class="aw-ico" style="font-size:' + (paper==='A5' ? '30px' : '40px') + ';margin:' + (paper==='A5' ? '4px 0 2px' : '6px 0 2px') + ';">' + cfg.icon + '</div>'
+                    + '<div class="aw-tit" style="font-size:' + tsz + 'px;">' + getAwTitle() + '</div>'
+                    + '<div class="aw-sub" style="margin-bottom:' + (paper==='A5' ? '4px' : '8px') + ';">' + cfg.sub + '</div>'
+                    + '<div class="aw-div" style="margin:' + (paper==='A5' ? '4px auto 10px' : '6px auto 14px') + ';"></div>'
+                    + '<div class="aw-body" style="font-size:' + fsz + 'px;font-family:' + font + ';line-height:' + (paper==='A5' ? '1.9' : '2.3') + ';margin-bottom:' + (paper==='A5' ? '8px' : '12px') + ';">' + body + '</div>'
+                    + '<div class="aw-ft" style="margin-top:' + (paper==='A5' ? '10px' : '18px') + ';padding-top:' + (paper==='A5' ? '8px' : '14px') + ';">' + footerBlock + '</div>'
+                    + '</div>'
+                    + '</div>';
+            }).join('');
+
+            hideAll();
+            document.getElementById('awardPreview').classList.remove('hidden');
+            document.getElementById('awardOut').innerHTML=html;
+            window.scrollTo(0,0);
+        }
+        // Drag برای تاریخ/شماره
+        function awDragStart(e, el){
+            e.preventDefault();
+            var isTouch = e.type === 'ontouchstart' || e.touches;
+            var startX = isTouch ? e.touches[0].clientX : e.clientX;
+            var startY = isTouch ? e.touches[0].clientY : e.clientY;
+            var rect = el.getBoundingClientRect();
+            var parent = el.parentElement.getBoundingClientRect();
+            var offX = startX - rect.left;
+            var offY = startY - rect.top;
+
+            function onMove(ev){
+                var cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
+                var cy = ev.touches ? ev.touches[0].clientY : ev.clientY;
+                var newLeft = cx - parent.left - offX;
+                var newTop  = cy - parent.top  - offY;
+                el.style.left = Math.max(0, newLeft) + 'px';
+                el.style.top  = Math.max(0, newTop)  + 'px';
+            }
+            function onUp(){
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup',   onUp);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('touchend',  onUp);
+                // اعمال موقعیت به همه کادرها
+                var allBoxes = document.querySelectorAll('[id^="datebox-"]');
+                allBoxes.forEach(function(box){
+                    box.style.left = el.style.left;
+                    box.style.top  = el.style.top;
+                });
+            }
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup',   onUp);
+            document.addEventListener('touchmove', onMove, {passive:false});
+            document.addEventListener('touchend',  onUp);
+        }
+
+        // ذخیره به عنوان PDF
+        function saveAsPDF(){
+            // بهترین روش: print به PDF
+            var style = document.createElement('style');
+            style.id = 'pdf-print-style';
+            style.textContent = '@page{size:A4;margin:6mm 8mm;}';
+            document.head.appendChild(style);
+            window.print();
+            setTimeout(function(){
+                var el = document.getElementById('pdf-print-style');
+                if(el) el.remove();
+            }, 1000);
+        }
+
+        // ارسال به شاد - تبدیل به تصویر
+        function shareToShad(){
+            var pages = document.querySelectorAll('.aw-page');
+            if(!pages.length){alert('ابتدا تقدیرنامه بسازید.');return;}
+
+            // بررسی وجود html2canvas
+            if(typeof html2canvas === 'undefined'){
+                var script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+                script.onload = function(){ doShareToShad(); };
+                script.onerror = function(){ showShadInstructions(); };
+                document.head.appendChild(script);
+            } else {
+                doShareToShad();
+            }
+        }
+
+        function doShareToShad(){
+            var pages = document.querySelectorAll('.aw-page');
+            var btn = document.querySelector('[onclick="shareToShad()"]');
+            if(btn){ btn.textContent='⏳ در حال آماده‌سازی...'; btn.disabled=true; }
+
+            var promises = [];
+            pages.forEach(function(page){
+                promises.push(html2canvas(page, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    logging: false,
+                    onclone: function(doc){
+                        doc.querySelectorAll('*').forEach(function(el){
+                            el.style.letterSpacing = 'normal';
+                            el.style.wordSpacing = 'normal';
+                        });
+                    }
+                }));
+            });
+
+            Promise.all(promises).then(function(canvases){
+                if(btn){ btn.textContent='📱 ارسال به شاد'; btn.disabled=false; }
+
+                if(canvases.length === 1){
+                    // یک تصویر - مستقیم share
+                    canvases[0].toBlob(function(blob){
+                        var file = new File([blob], 'taqdirnameh.jpg', {type:'image/jpeg'});
+                        if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+                            navigator.share({title:getAwTitle(), files:[file]})
+                                .catch(function(e){ if(e.name!=='AbortError') downloadImages(canvases); });
+                        } else {
+                            downloadImages(canvases);
+                        }
+                    }, 'image/jpeg', 0.92);
+                } else {
+                    // چند تصویر
+                    downloadImages(canvases);
+                }
+            }).catch(function(err){
+                if(btn){ btn.textContent='📱 ارسال به شاد'; btn.disabled=false; }
+                showShadInstructions();
+            });
+        }
+
+        function downloadImages(canvases){
+            canvases.forEach(function(canvas, i){
+                var link = document.createElement('a');
+                link.download = 'taqdirnameh-' + (i+1) + '.jpg';
+                link.href = canvas.toDataURL('image/jpeg', 0.92);
+                link.click();
+            });
+            // راهنما
+            var msg = document.createElement('div');
+            msg.style.cssText='position:fixed;bottom:20px;right:20px;left:20px;background:#27ae60;color:white;padding:14px 18px;border-radius:14px;font-family:Tahoma;font-size:13px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.3);direction:rtl;';
+            var btn2 = document.createElement('button');
+            btn2.textContent='متوجه شدم ✓';
+            btn2.style.cssText='background:white;color:#27ae60;border:none;padding:7px 18px;border-radius:10px;font-family:Tahoma;font-weight:bold;cursor:pointer;margin-top:8px;display:block;';
+            btn2.onclick=function(){msg.remove();};
+            msg.innerHTML='<b>📱 تصویر(ها) دانلود شد!</b><br>فایل JPG را در شاد ارسال کنید.<br>';
+            msg.appendChild(btn2);
+            document.body.appendChild(msg);
+            setTimeout(function(){if(msg.parentNode)msg.remove();},6000);
+        }
+
+        function showShadInstructions(){
+            var existing = document.getElementById('shadMsg');
+            if(existing){ existing.remove(); return; }
+            var msg = document.createElement('div');
+            msg.id = 'shadMsg';
+            msg.style.cssText = 'position:fixed;bottom:20px;right:20px;left:20px;background:#27ae60;color:white;padding:16px 20px;border-radius:14px;font-family:Tahoma;font-size:14px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.3);direction:rtl;';
+            var btn = document.createElement('button');
+            btn.textContent = 'متوجه شدم ✓';
+            btn.style.cssText = 'background:white;color:#27ae60;border:none;padding:8px 20px;border-radius:10px;font-family:Tahoma;font-weight:bold;cursor:pointer;margin-top:10px;display:block;';
+            btn.onclick = function(){ msg.remove(); };
+            msg.innerHTML = "<b>📱 ارسال به شاد:</b><br><br>"
+                + "۱. روی چاپ بزنید<br>"
+                + "۲. ذخیره به عنوان PDF را انتخاب کنید<br>"
+                + "۳. فایل PDF را در پیام‌رسان شاد ارسال کنید<br>";
+            msg.appendChild(btn);
+            document.body.appendChild(msg);
+            setTimeout(function(){ var m=document.getElementById('shadMsg'); if(m) m.remove(); }, 8000);
+        }
+
+        // ========== پایان تقدیرنامه ==========
+
+        </script>
 </body>
 </html>
