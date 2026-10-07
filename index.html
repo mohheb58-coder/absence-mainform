@@ -1114,7 +1114,7 @@
 
     <script>
         // URL API گوگل شیت
-        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxGSxM3KpgAMOwCzKR2vQpvhqmlmqjx4q0mJrYHIRXkvDDzViHZkejdWA7iFz4ln7QYBA/exec';
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycby9DkAvH2N2gcBrYIa3saCKEh8UT9y67eFQRghTxIZ5xEDR1GxfplTFSxlprPKp3p_iEQ/exec';
         
         // متغیرهای سراسری
         let students = [];
@@ -1451,17 +1451,39 @@
         }
 
         // دریافت اطلاعات کلاس
+        // *** رفع باگ مهم ***
+        // قبلاً این تابع async بود ولی در loadStudents() صدا زده می‌شد بدون await.
+        // یعنی اگر معلم سریع پایه/کلاس را عوض می‌کرد، چند درخواست همزمان به سرور
+        // می‌رفت و چون ترتیب برگشتنِ پاسخ‌ها تضمین‌شده نیست، ممکن بود پاسخِ کلاس
+        // قبلی، دیرتر از پاسخِ کلاس جدید برسد و نامِ معلمِ کلاس اشتباه را جایگزین کند
+        // (همان مشکلی که گزارش شد: «اسم معلمای دو کلاس را یکی می‌آورد»).
+        // با یک شمارنده‌ی درخواست (requestId)، فقط آخرین درخواست اجازه‌ی به‌روزرسانی
+        // صفحه را دارد و پاسخ‌های قدیمی/دیررسیده نادیده گرفته می‌شوند.
+        let classInfoRequestId = 0;
         async function getClassInfo(grade, classNum) {
+            const requestId = ++classInfoRequestId;
+
+            // بلافاصله مقدار قبلی (معلمِ کلاسِ قبلی) را پاک/مخفی کن تا کاربر
+            // به اشتباه نام معلمِ کلاس قبلی را به‌عنوان نام معلم فعلی نبیند
+            const teacherInput = document.getElementById('teacherName');
+            const classInfo = document.getElementById('classInfo');
+            teacherInput.value = '... در حال دریافت نام معلم';
+            classInfo.classList.add('hidden');
+
             const result = await callAPI('getClassInfo', {grade, class: classNum});
-            
+
+            // اگر در این فاصله کاربر پایه/کلاس دیگری انتخاب کرده، این پاسخِ دیررسیده
+            // را نادیده بگیر (از نمایشِ اطلاعاتِ کلاسِ اشتباه جلوگیری می‌کند)
+            if (requestId !== classInfoRequestId) return;
+
             if (result.success && result.data) {
-                const teacherInput = document.getElementById('teacherName');
-                const classInfo = document.getElementById('classInfo');
                 const studentCount = document.getElementById('studentCount');
-                
+
                 teacherInput.value = result.data.teacher || '';
                 studentCount.textContent = result.data.studentCount;
                 classInfo.classList.remove('hidden');
+            } else {
+                teacherInput.value = '';
             }
         }
 
