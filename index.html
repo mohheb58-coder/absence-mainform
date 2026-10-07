@@ -1451,40 +1451,33 @@
         }
 
         // دریافت اطلاعات کلاس
-        // *** رفع باگ مهم ***
-        // قبلاً این تابع async بود ولی در loadStudents() صدا زده می‌شد بدون await.
-        // یعنی اگر معلم سریع پایه/کلاس را عوض می‌کرد، چند درخواست همزمان به سرور
-        // می‌رفت و چون ترتیب برگشتنِ پاسخ‌ها تضمین‌شده نیست، ممکن بود پاسخِ کلاس
-        // قبلی، دیرتر از پاسخِ کلاس جدید برسد و نامِ معلمِ کلاس اشتباه را جایگزین کند
-        // (همان مشکلی که گزارش شد: «اسم معلمای دو کلاس را یکی می‌آورد»).
-        // با یک شمارنده‌ی درخواست (requestId)، فقط آخرین درخواست اجازه‌ی به‌روزرسانی
-        // صفحه را دارد و پاسخ‌های قدیمی/دیررسیده نادیده گرفته می‌شوند.
-        let classInfoRequestId = 0;
+        // *** بهینه‌سازی مهم (رفع کندی) ***
+        // قبلاً این تابع برای هر تغییر پایه/کلاس یک درخواست جداگانه به سرور
+        // می‌زد (getClassInfo در Apps Script) که باید کل شیت دانش‌آموزان را
+        // می‌خواند — همین باعث می‌شد اسم معلم با تأخیر بیاید (برخلاف اسم
+        // دانش‌آموزها که چون از قبل در آرایهٔ students بارگذاری شده، آنی نمایش
+        // داده می‌شود). چون همان آرایهٔ students از قبل فیلد teacher هر
+        // دانش‌آموز را هم دارد (از fetchStudents در بارگذاری اول صفحه)، دیگر
+        // نیازی به درخواست جداگانه نیست؛ اسم معلم و تعداد دانش‌آموز، دقیقاً مثل
+        // اسم دانش‌آموزها، مستقیم از همان آرایه و به‌صورت آنی محاسبه می‌شود.
         async function getClassInfo(grade, classNum) {
-            const requestId = ++classInfoRequestId;
+            // اطمینان از بارگذاری کامل لیست دانش‌آموزان (در حالت عادی که
+            // fetchStudents در بارگذاری اول صفحه تمام شده، این حالت رخ نمی‌دهد
+            // و تابع بلافاصله و بدون تأخیر شبکه ادامه پیدا می‌کند)
+            if (!students.length) {
+                await fetchStudents();
+            }
 
-            // بلافاصله مقدار قبلی (معلمِ کلاسِ قبلی) را پاک/مخفی کن تا کاربر
-            // به اشتباه نام معلمِ کلاس قبلی را به‌عنوان نام معلم فعلی نبیند
             const teacherInput = document.getElementById('teacherName');
             const classInfo = document.getElementById('classInfo');
-            teacherInput.value = '... در حال دریافت نام معلم';
-            classInfo.classList.add('hidden');
+            const studentCount = document.getElementById('studentCount');
 
-            const result = await callAPI('getClassInfo', {grade, class: classNum});
+            const filtered = students.filter(s => s.grade === grade && s.class === classNum);
+            const withTeacher = filtered.find(s => s.teacher);
 
-            // اگر در این فاصله کاربر پایه/کلاس دیگری انتخاب کرده، این پاسخِ دیررسیده
-            // را نادیده بگیر (از نمایشِ اطلاعاتِ کلاسِ اشتباه جلوگیری می‌کند)
-            if (requestId !== classInfoRequestId) return;
-
-            if (result.success && result.data) {
-                const studentCount = document.getElementById('studentCount');
-
-                teacherInput.value = result.data.teacher || '';
-                studentCount.textContent = result.data.studentCount;
-                classInfo.classList.remove('hidden');
-            } else {
-                teacherInput.value = '';
-            }
+            teacherInput.value = withTeacher ? withTeacher.teacher : '';
+            studentCount.textContent = filtered.length;
+            classInfo.classList.remove('hidden');
         }
 
         // تغییر وضعیت غیبت
