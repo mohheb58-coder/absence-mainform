@@ -547,10 +547,7 @@
             </div>
             <div class="form-group">
                 <label>سال:</label>
-                <select id="yearSelect" onchange="updateMonthPicker()">
-                    <option value="1403">1403</option>
-                    <option value="1404">1404</option>
-                </select>
+                <select id="yearSelect" onchange="updateMonthPicker()"></select>
             </div>
             <div class="form-group">
                 <label>ماه:</label>
@@ -1238,8 +1235,42 @@
         }
 
         // نمایش انتخابگر تاریخ
+        // سال شمسی جاری
+        function getCurrentPersianYear() {
+            try {
+                const parts = new Intl.DateTimeFormat('en-u-ca-persian-nu-latn', {year:'numeric'}).formatToParts(new Date());
+                const y = parseInt(parts.find(p => p.type === 'year').value, 10);
+                if (y > 1300 && y < 1700) return y;
+            } catch(e) {}
+            const now = new Date();
+            return now.getFullYear() - 621;
+        }
+
+        // ساخت لیست سال‌ها: از ۱۴۰۳ تا ۱۰ سال بعد از سال جاری
+        function populateYearSelect(targetId) {
+            const sel = document.getElementById('yearSelect');
+            const cur = getCurrentPersianYear();
+            const from = 1403;
+            const to = Math.max(cur + 10, 1415);
+
+            // اگر فیلد قبلاً تاریخی دارد همان سال انتخاب شود، وگرنه سال جاری
+            let chosen = cur;
+            const existing = targetId && document.getElementById(targetId) ? document.getElementById(targetId).value : '';
+            const m = existing && existing.match(/^(\d{4})\//);
+            if (m) chosen = parseInt(m[1], 10);
+            if (chosen < from) chosen = from;
+            if (chosen > to) chosen = to;
+
+            let html = '';
+            for (let y = from; y <= to; y++) {
+                html += `<option value="${y}"${y === chosen ? ' selected' : ''}>${y}</option>`;
+            }
+            sel.innerHTML = html;
+        }
+
         function showDatePicker(targetId) {
             currentDatePickerTarget = targetId;
+            populateYearSelect(targetId);
             document.getElementById('datePickerModal').style.display = 'flex';
             updateMonthPicker();
         }
