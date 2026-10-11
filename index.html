@@ -1111,7 +1111,7 @@
 
     <script>
         // URL API گوگل شیت
-        const SHEET_URL = 'https://script.google.com/macros/s/AKfycby9DkAvH2N2gcBrYIa3saCKEh8UT9y67eFQRghTxIZ5xEDR1GxfplTFSxlprPKp3p_iEQ/exec';
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxlprCEWZgiDGoH0GGhbZqQknwzB2Ga5_1D6PKkIQ1_7JEJ6U3yr9ahFqo7O0xKsxeqzg/exec';
         
         // متغیرهای سراسری
         let students = [];
@@ -1615,7 +1615,14 @@
                 class: classNum,
                 teacher: teacher,
                 time: new Date().toLocaleTimeString('fa-IR'),
-                students: Array.from(currentAbsent)
+                students: Array.from(currentAbsent),
+                // نام و نام‌خانوادگیِ جداشده، دقیقاً مطابق شیت دانش‌آموزان (برای نام‌های دو‌قسمتی)
+                studentsDetail: Array.from(currentAbsent).map(full => {
+                    const st = students.find(s => (s.name + ' ' + s.family) === full
+                        && String(s.grade) === String(grade) && String(s.class) === String(classNum))
+                        || students.find(s => (s.name + ' ' + s.family) === full);
+                    return st ? { name: st.name, family: st.family } : { name: full, family: '' };
+                })
             });
 
             if (result.success) {
