@@ -833,7 +833,7 @@
             </div>
             <div class="form-group">
                 <label>معلم:</label>
-                <input type="text" id="newStudentTeacher" class="auto-teacher" placeholder="نام معلم به طور خودکار پر می‌شود" readonly>
+                <input type="text" id="newStudentTeacher" class="auto-teacher" placeholder="نام معلم از شیت پر می‌شود (اگر خالی بود تایپ کنید)" readonly>
             </div>
             <div id="addStudentMessage" class="hidden"></div>
             <div class="button-group">
@@ -1121,32 +1121,7 @@
         window.pendingDeletion = null;
 
         // پایگاه داده معلمان برای هر پایه و کلاس
-        const teachersDatabase = {
-            'اول': {
-                '1': 'خانم زرگوش',
-                '2': 'خانم مرادیان',
-                '3': 'خانم نظری',
-                '4': 'آقای موسوی',
-                '5': 'خانم کریمی',
-                '6': 'خانم جعفری'
-            },
-            'دوم': {
-                '1': 'آقای رحیمی',
-                '2': 'آخانم شوقی',
-                '3': 'آقای امرائی',
-                '4': 'آقای دشتیان',
-                '5': 'آقای خالی',
-                '6': 'خانم خالی'
-            },
-            'سوم': {
-                '1': 'خانم پیرمیشانی',
-                '2': 'آقای بازوند',
-                '3': 'خانم نویدی',
-                '4': 'خانم فیضی',
-                '5': 'خانم موسوی',
-                '6': 'خانم تاجیک'
-            }
-        };
+        // نام معلم‌ها دیگر اینجا ثبت نشده؛ همیشه از شیت دانش‌آموزان (ستون «معلم») خوانده می‌شود.
 
         // ماه‌های شمسی
         const persianMonths = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 
@@ -1175,12 +1150,30 @@
             const grade = document.getElementById('newStudentGrade').value;
             const classNum = document.getElementById('newStudentClass').value;
             const teacherInput = document.getElementById('newStudentTeacher');
-            
-            if (grade && classNum && teachersDatabase[grade] && teachersDatabase[grade][classNum]) {
-                teacherInput.value = teachersDatabase[grade][classNum];
+
+            // معلم هر کلاس از روی شیت دانش‌آموزان (آرایهٔ students) خوانده می‌شود:
+            // پرتکرارترین نام معلمِ ثبت‌شده برای دانش‌آموزان همان پایه و کلاس
+            let teacher = '';
+            if (grade && classNum) {
+                const counts = {};
+                students.forEach(s => {
+                    if (String(s.grade) === String(grade) && String(s.class) === String(classNum)) {
+                        const t = (s.teacher || '').toString().trim();
+                        if (t) counts[t] = (counts[t] || 0) + 1;
+                    }
+                });
+                const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+                teacher = names.length ? names[0] : '';
+            }
+
+            if (teacher) {
+                teacherInput.value = teacher;
+                teacherInput.readOnly = true;
                 teacherInput.classList.add('auto-teacher');
             } else {
+                // کلاس جدید یا بدون معلم در شیت: نام معلم را می‌شود دستی وارد کرد
                 teacherInput.value = '';
+                teacherInput.readOnly = !(grade && classNum) ;
                 teacherInput.classList.remove('auto-teacher');
             }
         }
