@@ -33,6 +33,70 @@
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/parastoo-font@v4.0.2/dist/Parastoo.woff2') format('woff2');
             font-display: swap;
         }
+        .student-photo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; display: block; border: 3px solid #2e7d32; box-shadow: 0 0 8px rgba(46,125,50,.55); }
+        .student-item { cursor: pointer; user-select: none; position: relative; }
+        .row-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #000; z-index: 1; pointer-events: none; }
+        .split-head { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 8px; direction: ltr; }
+        .split-head .sh-left { box-sizing: border-box; background: linear-gradient(135deg, #e53935, #ef5350); color: #fff; font-weight: 900; font-size: 14px; padding: 9px 12px; border-radius: 10px 0 0 10px; text-align: left; direction: rtl; }
+        .split-head .sh-right { display: block; padding: 0; }
+        .split-head .sh-right { font-size: 0; }
+        .emoji-btn { position: relative; }
+        .student-item.absent-row .student-name { color: #e53935 !important; font-weight: 800; }
+        /* با غیبت، عکس کنار اسم قرار می‌گیرد */
+        /* ردیف: اول اسم (سمت راست) با کمی فاصله، بعد عکس کنار آن.
+           با غیبت، عکس به سمت چپ ردیف می‌رود */
+        .student-item { display: flex; align-items: center; gap: 14px; justify-content: flex-start; }
+        .student-item .emoji-btn { flex-shrink: 0; }
+        .student-item.absent-row { justify-content: flex-end; }
+        .group-head { font-size: 14px; font-weight: 900; padding: 9px 12px; margin: 14px 0 6px; border-radius: 10px; color: #fff; }
+        .group-head.absent-head { background: linear-gradient(135deg, #e53935, #ef5350); }
+        .group-head.present-head { background: linear-gradient(135deg, #2e7d32, #43a047); }
+        #studentList.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+        .att-col { min-width: 0; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; background: #fff; }
+        .att-col-head { font-size: 14px; font-weight: 900; padding: 10px 12px; color: #fff; }
+        .att-col.absent .att-col-head { background: linear-gradient(135deg, #e53935, #ef5350); }
+        .att-col.present .att-col-head { background: linear-gradient(135deg, #2e7d32, #43a047); }
+        .att-col-empty { padding: 14px; text-align: center; color: #999; font-size: 13px; }
+        @media (max-width: 560px) { #studentList.two-col { grid-template-columns: 1fr; } }
+        .student-item .student-name { flex: 0 1 auto; }
+        .student-item:not(.absent-row) .student-name { flex: 0 0 170px; width: 170px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .absent-summary { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: #f5f7fb; font-size: 14px; line-height: 1.9; }
+        .absent-summary .sum-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .absent-summary .sum-badge { padding: 4px 10px; border-radius: 999px; font-weight: 700; }
+        .absent-summary .b-total { background: #e0e7ff; color: #3730a3; }
+        .absent-summary .b-absent { background: #fdecea; color: #c62828; }
+        .absent-summary .b-present { background: #e8f5e9; color: #2e7d32; }
+        .absent-summary .absent-names { margin-top: 8px; color: #c62828; font-weight: 600; }
+        .absent-mark { position: absolute; bottom: -4px; right: -4px; font-size: 16px; background: #fff; border-radius: 50%; }
+        .emoji-btn.absent { background: #fdecea !important; border-radius: 12px; padding: 2px; filter: none !important; }
+        .emoji-btn.absent .student-photo { width: 52px; height: 52px; border: 3px solid #e53935 !important; box-shadow: 0 0 10px rgba(229,57,53,0.7); filter: none !important; opacity: 1 !important; }
+        .emoji-btn.absent .absent-mark { font-size: 20px; bottom: -6px; right: -6px; }
+            /* ===== تم ردیف‌های دانش‌آموزان (همان تم دفتر انضباطی) ===== */
+        .student-item { position: relative; background: var(--row-bg, #fff); border-top: 2px solid #000 !important; border-bottom: 2px solid #000 !important; padding: 12px 14px; border-radius: 0; margin: 0; }
+        .student-item::before, .student-item::after { content: ''; position: absolute; top: 0; bottom: 0; width: 5px; background: var(--card-accent, #5BBAF0); }
+        .student-item::before { right: 0; border-radius: 0 12px 12px 0; }
+        .student-item::after { left: 0; border-radius: 12px 0 0 12px; }
+        html.row-blue .student-item.alt   { background: #e3f1ff !important; }
+        html.row-green .student-item.alt  { background: #e4f7ea !important; }
+        html.row-yellow .student-item.alt { background: #fff6cc !important; }
+        html.row-pink .student-item.alt   { background: #ffe4ef !important; }
+        html.row-grad .student-item       { background: linear-gradient(90deg, #f3e8ff 0%, #e0f2fe 100%) !important; }
+        html.row-grad .student-item.alt   { background: linear-gradient(90deg, #e0f2fe 0%, #f3e8ff 100%) !important; }
+        .row-theme-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0; font-size: 13px; font-weight: 700; }
+        .row-theme-bar select, .row-theme-bar input[type=color] { padding: 6px 10px; border-radius: 10px; border: 2px solid #ddd; font-family: inherit; font-size: 13px; }
+        .row-theme-bar input[type=color] { width: 44px; height: 36px; padding: 2px; cursor: pointer; }
+
+        /* ===== چیدمان ردیف‌ها: غایبین سمت چپ، حاضرین سمت راست با خط وسط ===== */
+        .student-item { display: flex; align-items: center; gap: 14px; justify-content: flex-start; position: relative; }
+        .student-item.absent-row { justify-content: flex-end; }
+        .student-item .student-name { flex: 0 1 auto; }
+        .student-item:not(.absent-row) .student-name { flex: 0 0 170px; width: 170px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .student-item .emoji-btn, .student-item .student-photo { flex-shrink: 0; }
+        .row-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #000; z-index: 1; pointer-events: none; }
+        .split-head { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 8px; direction: ltr; }
+        .split-head .sh-left { box-sizing: border-box; background: linear-gradient(135deg, #e53935, #ef5350); color: #fff; font-weight: 900; font-size: 14px; padding: 9px 12px; border-radius: 10px 0 0 10px; text-align: left; direction: rtl; }
+        .split-head .sh-right { display: block; padding: 0; }
+        .split-head .sh-present { display: block; box-sizing: border-box; width: 100%; background: #22b14c; color: #111; font-weight: 900; font-size: 14px; padding: 9px 12px; border: 4px solid #ffd400; border-radius: 6px; text-align: center; }
     </style>
     <title>سیستم حضور و غیاب مدرسه شهید نیاسری1</title>
     <style>
@@ -165,7 +229,7 @@
         .student-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             padding: 8px;
             border-bottom: 1px solid #eee;
         }
@@ -629,7 +693,24 @@
             <div id="classInfo" class="message info hidden" style="text-align: center;">
                 تعداد دانش‌آموزان: <span id="studentCount">0</span> نفر
             </div>
+            <div class="row-theme-bar">
+                <span>🎨 تم ردیف‌ها:</span>
+                <select id="rowStyleSel" onchange="applyRowStyle(this.value)">
+                    <option value="plain">پیش‌فرض</option>
+                    <option value="blue">آبی و سفید</option>
+                    <option value="green">سبز و سفید</option>
+                    <option value="yellow">زرد و سفید</option>
+                    <option value="pink">صورتی و سفید</option>
+                    <option value="grad">گرادیان ملایم</option>
+                </select>
+                <label>رنگ پس‌زمینه: <input type="color" id="rowBgPick" value="#ffffff" oninput="applyRowBg(this.value)"></label>
+            </div>
+            <div id="splitHead" class="split-head" style="display:none;">
+                <div class="sh-left">🙁 غایبین (۰)</div>
+                <div class="sh-right"><span class="sh-present">حاضرین (۰)</span></div>
+            </div>
             <div id="studentList" class="student-list"></div>
+            <div id="absentSummary" class="absent-summary"></div>
             <div id="teacherMessage" class="hidden"></div>
             <div class="button-group">
                 <button class="btn" onclick="noAbsent()" id="noAbsentBtn">غایب نداریم</button>
@@ -705,6 +786,7 @@
             <div id="dailyReportContent"></div>
             <div class="button-group">
                 <button class="btn btn-success btn-small" onclick="copyDailyReport()">کپی برای اولیا</button>
+                <button class="btn btn-small" onclick="generateImageReport()">🖼️ گزارش تصویری</button>
                 <button class="btn btn-secondary btn-small" onclick="showManagerPanel()">بازگشت</button>
             </div>
         </div>
@@ -1112,9 +1194,28 @@
     <script>
         // URL API گوگل شیت
         const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxlprCEWZgiDGoH0GGhbZqQknwzB2Ga5_1D6PKkIQ1_7JEJ6U3yr9ahFqo7O0xKsxeqzg/exec';
+        // آدرس Web App گوگل اسکریپت سامانه مدرسه (لیست دانش‌آموزان از همان شیت خوانده می‌شود)
+        const SCHOOL_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwp06rHoa1g4fL_UZkNpY-zaKAlwCkV09jQwro1V6B4N9IdCOeJPBJeTjhoAU2Jw0yK/exec';
+        // لیست معلمان (از برگه معلمان_کلاس) - به‌عنوان داده پیش‌فرض، بدون نیاز به اتصال
+        let teacherMap = {
+            'اول|1': 'خانم زرگوش',
+            'اول|2': 'خانم مرادیان',
+            'اول|3': 'خانم نظری',
+            'اول|4': 'آقای موسوی',
+            'دوم|1': 'آقای رحیمی',
+            'دوم|2': 'خانم شوقی',
+            'دوم|3': 'حانم هادی نیا',
+            'دوم|4': 'خانم کاشی',
+            'سوم|1': 'خانم میر خندان',
+            'سوم|2': 'خانم فرخنده مهر',
+            'سوم|3': 'خانم فیضی',
+            'سوم|4': 'آقای حاجی پور',
+            'سوم|5': 'خانم موسوی'
+        };
         
         // متغیرهای سراسری
         let students = [];
+        let studentsLoaded = false;
         let currentAbsent = new Set();
         let currentStatistics = null;
         let currentDatePickerTarget = null;
@@ -1211,7 +1312,17 @@
 
         // بارگذاری اولیه
         window.addEventListener('load', () => {
+            // نمایش فوری از نسخه ذخیره‌شده روی دستگاه، بعد به‌روزرسانی از شیت (موازی)
+            try {
+                const cs = JSON.parse(localStorage.getItem('att_students_cache') || 'null');
+                if (Array.isArray(cs) && cs.length) students = cs;
+            } catch (e) {}
+            try {
+                const ct = JSON.parse(localStorage.getItem('att_teacher_cache') || 'null');
+                if (ct && typeof ct === 'object') teacherMap = ct;
+            } catch (e) {}
             fetchStudents();
+            fetchTeachers();
             initializeDatePicker();
         });
 
@@ -1346,11 +1457,141 @@
             }
         }
 
-        // دریافت لیست دانش‌آموزان
+        // دریافت لیست دانش‌آموزان از گوگل شیت سامانه مدرسه
+        function toEnDigits(s) {
+            return String(s ?? '').replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+                                  .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).trim();
+        }
+
+        // ---- برگه معلمان (بدون تغییر در Apps Script) ----
+        // شناسه گوگل شیت (بخشی از آدرس شیت بین /d/ و /edit) و نام برگه معلمان
+        const TEACHERS_SHEET_ID = '17PZCvJQdmKSsIHam9QkKdmnHMhRIKcyvdALwm4Xn0qU';
+        const TEACHERS_TAB = 'معلمان_کلاس';
+        // اگر برگه را از File ← Publish to web به‌صورت CSV منتشر کردید، آدرس آن را اینجا قرار دهید (در غیر این صورت خالی بماند)
+        const TEACHERS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS76PUeSFnoo3J9JklmWNbgwUZ71KsYBavRc5CvLSioOJk4ll9bZDUBEoiMEAeXVWryZ9xQHoMqab4j/pub?gid=33091608&single=true&output=csv';
+
+        // تبدیل CSV به آرایه‌ای از ردیف‌ها (با پشتیبانی ساده از فیلد داخل گیومه)
+        function parseCSV(text) {
+            const rows = [];
+            let row = [], field = '', inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                if (inQuotes) {
+                    if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+                    else if (c === '"') inQuotes = false;
+                    else field += c;
+                } else if (c === '"') inQuotes = true;
+                else if (c === ',') { row.push(field); field = ''; }
+                else if (c === '\n' || c === '\r') {
+                    if (c === '\r' && text[i + 1] === '\n') i++;
+                    row.push(field); rows.push(row); row = []; field = '';
+                } else field += c;
+            }
+            if (field || row.length) { row.push(field); rows.push(row); }
+            return rows;
+        }
+
+        // دریافت معلمان هر پایه/کلاس از برگه معلمان_کلاس
+        // با روش JSONP (تگ script) تا مشکل CORS وقتی فایل از حالت محلی باز می‌شود، پیش نیاید
+        function fetchTeachers() {
+            return new Promise(resolve => {
+                if (!TEACHERS_SHEET_ID || TEACHERS_SHEET_ID.includes('PASTE_')) return resolve();
+                const cbName = 'handleTeachersData_' + Date.now();
+                const script = document.createElement('script');
+                const cleanup = () => {
+                    delete window[cbName];
+                    if (script.parentNode) script.parentNode.removeChild(script);
+                };
+                const timer = setTimeout(() => {
+                    console.error('زمان دریافت معلمان تمام شد');
+                    cleanup();
+                    resolve();
+                }, 10000);
+
+                window[cbName] = (resp) => {
+                    clearTimeout(timer);
+                    try {
+                        const table = resp.table;
+                        const rowsAll = table.rows || [];
+                        const cell = (c) => (c && c.v !== null && c.v !== undefined) ? c.v : '';
+                        // اگر عنوان ستون‌ها در ردیف اول بود، از آن استفاده می‌کنیم
+                        let headers = table.cols.map(c => String(c.label || '').trim());
+                        let dataRows = rowsAll;
+                        if (!headers.includes('پایه')) {
+                            headers = rowsAll[0].c.map(c => String(cell(c)).trim());
+                            dataRows = rowsAll.slice(1);
+                        }
+                        const iGrade = headers.indexOf('پایه');
+                        const iClass = headers.indexOf('شماره کلاس');
+                        const iTeacher = headers.indexOf('نام معلم');
+                        const map = {};
+                        dataRows.forEach(r => {
+                            const g = String(cell(r.c[iGrade])).trim();
+                            const c = toEnDigits(String(cell(r.c[iClass])));
+                            const t = String(cell(r.c[iTeacher])).trim();
+                            if (g && c && t) map[g + '|' + c] = t;
+                        });
+                        teacherMap = map;
+                try { localStorage.setItem('att_teacher_cache', JSON.stringify(map)); } catch (e) {}
+                    } catch (error) {
+                        console.error('خطا در خواندن معلمان:', error);
+                    }
+                    cleanup();
+                    resolve();
+                };
+
+                script.onerror = () => {
+                    clearTimeout(timer);
+                    console.error('خطا در بارگذاری برگه معلمان. آدرس:', script.src);
+                    cleanup();
+                    resolve();
+                };
+
+                const sheetName = encodeURIComponent(TEACHERS_TAB);
+                script.src = `https://docs.google.com/spreadsheets/d/${TEACHERS_SHEET_ID}/gviz/tq?tqx=out:json;responseHandler:${cbName}&sheet=${sheetName}&t=${Date.now()}`;
+                document.body.appendChild(script);
+            });
+        }
+
+        // تبدیل لینک اشتراک‌گذاری گوگل درایو به آدرس قابل نمایش در <img>
+        function toDirectImageUrl(url) {
+            if (!url) return '';
+            const m = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/);
+            if (m) return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w200`;
+            return url;
+        }
+
         async function fetchStudents() {
-            const result = await callAPI('getStudents');
-            if (result.success && result.data) {
-                students = result.data;
+            if (!SCHOOL_SHEET_URL || SCHOOL_SHEET_URL.includes('PASTE_')) {
+                console.error('آدرس گوگل شیت سامانه مدرسه تنظیم نشده است');
+                studentsLoaded = true;
+                return;
+            }
+            try {
+                const res = await fetch(`${SCHOOL_SHEET_URL}?action=getAll&t=${Date.now()}`);
+                const json = await res.json();
+                students = (json.data || [])
+                    .map(r => ({
+                        name: String(r['نام'] ?? '').trim(),
+                        family: String(r['نام خانوادگی'] ?? '').trim(),
+                        grade: String(r['پایه'] ?? '').trim(),
+                        class: toEnDigits(r['شماره کلاس']),
+                        teacher: String(r['معلم'] ?? '').trim(),
+                        photo: typeof toDirectImageUrl === 'function' ? toDirectImageUrl(String(r['عکس'] ?? '').trim()) : ''
+                    }))
+                    .filter(s => s.name || s.family);
+                try { localStorage.setItem('att_students_cache', JSON.stringify(students)); } catch (e) {}
+            } catch (error) {
+                console.error('خطا در دریافت دانش‌آموزان از گوگل شیت:', error);
+            } finally {
+                const firstLoad = !studentsLoaded;
+                studentsLoaded = true;
+                // اگر کاربر قبل از رسیدن داده، پایه و کلاس را انتخاب کرده بود، الان لیست را نشان بده
+                if (firstLoad) {
+                    const g = document.getElementById('gradeSelect');
+                    const c = document.getElementById('classSelect');
+                    if (g && c && g.value && c.value) loadStudents();
+                }
             }
         }
 
@@ -1457,6 +1698,10 @@
             filtered.sort((a, b) => a.family.localeCompare(b.family, 'fa'));
             
             const listDiv = document.getElementById('studentList');
+            if (!studentsLoaded) {
+                listDiv.innerHTML = '<p class="message info">در حال بارگذاری لیست دانش‌آموزان...</p>';
+                return;
+            }
             currentAbsent.clear();
             
             getClassInfo(grade, classNum);
@@ -1467,12 +1712,73 @@
             }
             
             listDiv.innerHTML = filtered.map((s, i) => `
-                <div class="student-item">
+                <div class="student-item${i % 2 ? ' alt' : ''}" style="--card-accent:${ROW_ACCENTS[i % ROW_ACCENTS.length]}" onclick="toggleAbsent(${i}, '${s.name}', '${s.family}')">
+                    <span class="row-divider"></span>
                     <span class="student-name">${i + 1}. ${s.name} ${s.family}</span>
-                    <button class="emoji-btn" id="emoji${i}" onclick="toggleAbsent(${i}, '${s.name}', '${s.family}')">🙋‍♂️</button>
+                    <button class="emoji-btn" id="emoji${i}" data-photo="${s.photo || ''}">${s.photo ? `<img class="student-photo" loading="lazy" src="${s.photo}" alt="">` : '🙋‍♂️'}</button>
                 </div>
             `).join('');
+            updateAbsentSummary();
         }
+
+        // تبدیل عدد به ارقام فارسی
+        function toFaNum(n) {
+            return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+        }
+
+        // نمایش تعداد کل، حاضر، غایب و نام غایبان زیر لیست
+        function updateAbsentSummary() {
+            const box = document.getElementById('absentSummary');
+                  if (!box) return;
+            const total = document.querySelectorAll('#studentList .student-item').length;
+            if (total === 0) { box.innerHTML = ''; return; }
+            // نام غایبان همراه با شماره ردیف (مثلاً: 3. علی احمدی)
+            const absentItems = [...document.querySelectorAll('#studentList .student-item')]
+                .filter(it => it.querySelector('.emoji-btn.absent'));
+            const absentNames = absentItems.map(it => it.querySelector('.student-name').textContent.trim());
+            const absentCount = absentItems.length;
+            const splitHead = document.getElementById('splitHead');
+            if (splitHead) {
+                splitHead.style.display = '';
+                splitHead.querySelector('.sh-left').textContent = `🙁 غایبین (${toFaNum(String(absentCount))})`;
+                splitHead.querySelector('.sh-present').textContent = `حاضرین (${toFaNum(String(total - absentCount))})`;
+            }
+
+            const presentCount = total - absentCount;
+            box.innerHTML = `
+                <div class="sum-row">
+                    <span class="sum-badge b-total">👥 کل: ${total}</span>
+                    <span class="sum-badge b-present">✅ حاضر: ${presentCount}</span>
+                    <span class="sum-badge b-absent">🙁 غایب: ${absentCount}</span>
+                </div>
+                                ${absentCount ? `<div class="absent-names">غایبان (${toFaNum(absentCount)} نفر): ${absentItems.map((it, idx) => `${toFaNum(idx + 1)}. ${it.querySelector('.student-name').textContent.replace(/^\s*\d+\.\s*/, '').trim()}`).join('، ')}</div>` : ''}
+            `;
+        }
+
+
+        // ===== تم ردیف‌ها (ذخیره روی همین دستگاه) =====
+        const ROW_ACCENTS = ['#5BBAF0','#4DD6A8','#9B87E8','#F7B955','#F472B6','#60A5FA'];
+        function applyRowBg(color) {
+            document.documentElement.style.setProperty('--row-bg', color);
+            try { localStorage.setItem('att_row_bg', color); } catch (e) {}
+        }
+        function applyRowStyle(name) {
+            const classes = ['row-blue', 'row-green', 'row-yellow', 'row-pink', 'row-grad'];
+            document.documentElement.classList.remove(...classes);
+            if (name && name !== 'plain') document.documentElement.classList.add('row-' + name);
+            const sel = document.getElementById('rowStyleSel');
+            if (sel) sel.value = name || 'plain';
+            try { localStorage.setItem('att_row_style', name || 'plain'); } catch (e) {}
+        }
+        function loadRowTheme() {
+            let c = '#ffffff', st = 'plain';
+            try { c = localStorage.getItem('att_row_bg') || '#ffffff'; st = localStorage.getItem('att_row_style') || 'plain'; } catch (e) {}
+            const pick = document.getElementById('rowBgPick');
+            if (pick) pick.value = c;
+            applyRowBg(c);
+            applyRowStyle(st);
+        }
+        loadRowTheme();
 
         // دریافت اطلاعات کلاس
         // *** بهینه‌سازی مهم (رفع کندی) ***
@@ -1499,7 +1805,8 @@
             const filtered = students.filter(s => s.grade === grade && s.class === classNum);
             const withTeacher = filtered.find(s => s.teacher);
 
-            teacherInput.value = withTeacher ? withTeacher.teacher : '';
+            const mappedTeacher = teacherMap[grade + '|' + classNum];
+            teacherInput.value = mappedTeacher || (withTeacher ? withTeacher.teacher : '');
             studentCount.textContent = filtered.length;
             classInfo.classList.remove('hidden');
         }
@@ -1511,13 +1818,16 @@
             
             if (currentAbsent.has(key)) {
                 currentAbsent.delete(key);
-                btn.textContent = '🙋‍♂️';
+                btn.innerHTML = btn.dataset.photo ? `<img class="student-photo" src="${btn.dataset.photo}" alt="">` : '🙋‍♂️';
                 btn.classList.remove('absent');
             } else {
                 currentAbsent.add(key);
-                btn.textContent = '🙁';
+                btn.innerHTML = btn.dataset.photo ? `<img class="student-photo" src="${btn.dataset.photo}" alt=""><span class="absent-mark">🙁</span>` : '🙁';
                 btn.classList.add('absent');
             }
+            const row = btn.closest('.student-item');
+            if (row) row.classList.toggle('absent-row', currentAbsent.has(key));
+            updateAbsentSummary();
         }
 
         // ثبت عدم غیبت
@@ -1791,6 +2101,181 @@
             html += `</div>`;
 
             contentDiv.innerHTML = html;
+        }
+
+        // ساخت گزارش تصویری غیبت (متن گزارش متنی تغییری نمی‌کند)
+        async function generateImageReport() {
+            const today = new Date().toLocaleDateString('fa-IR');
+            const result = await callAPI('getDailyAbsences', { date: today });
+            if (!result.success || !result.data || result.data.length === 0) {
+                alert('گزارشی برای ساختن تصویر وجود ندارد');
+                return;
+            }
+            const list = result.data;
+            list.sort((a, b) => {
+                const gradeOrder = { اول: 1, دوم: 2, سوم: 3 };
+                if (gradeOrder[a.grade] !== gradeOrder[b.grade]) return gradeOrder[a.grade] - gradeOrder[b.grade];
+                return parseInt(a.class) - parseInt(b.class);
+            });
+
+            // پیدا کردن عکس هر دانش‌آموز از لیست دانش‌آموزان
+            const photoOf = (name) => {
+                const st = students.find(x => (x.name + ' ' + x.family).trim() === String(name).trim());
+                return st && st.photo ? st.photo : '';
+            };
+
+            // بارگذاری عکس‌ها (اگر سرور اجازه ندهد، جایگزین ساده نمایش داده می‌شود)
+            const imgCache = {};
+            const urls = new Set();
+            list.forEach(a => a.students.forEach(n => { const u = photoOf(n); if (u) urls.add(u); }));
+            await Promise.all([...urls].map(u => new Promise(resolve => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                const timer = setTimeout(resolve, 8000);
+                img.onload = () => { clearTimeout(timer); imgCache[u] = img; resolve(); };
+                img.onerror = () => { clearTimeout(timer); resolve(); };
+                img.src = u;
+            })));
+
+            // محاسبه ارتفاع
+            const W = 760, PAD = 24, ROW = 66, HEAD = 58;
+            const blockH = list.map(a => HEAD + Math.max(1, a.students.length) * ROW + 18);
+            const titleH = 110, sumH = 80;
+            const H = titleH + blockH.reduce((x, y) => x + y, 0) + sumH + PAD;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = W;
+            canvas.height = H;
+            const ctx = canvas.getContext('2d');
+            ctx.direction = 'rtl';
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            const FONT = 'Tahoma, Arial, sans-serif';
+
+            // پس‌زمینه
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, W, H);
+
+            // عنوان
+            ctx.fillStyle = '#1e3a8a';
+            ctx.font = `bold 26px ${FONT}`;
+            ctx.fillText('گزارش غیبت مدرسه شهید نیاسری', W - PAD, PAD + 30);
+            ctx.font = `16px ${FONT}`;
+            ctx.fillStyle = '#374151';
+            ctx.fillText(`تاریخ: ${today}`, W - PAD, PAD + 66);
+
+            let y = titleH;
+            let totalAbsent = 0;
+
+            list.forEach((a, bi) => {
+                const h = blockH[bi];
+                // کادر کلاس
+                ctx.fillStyle = '#f5f7fb';
+                roundRect(ctx, PAD, y, W - PAD * 2, h - 10, 14);
+                ctx.fill();
+
+                // سرتیتر کلاس
+                ctx.fillStyle = '#1e3a8a';
+                ctx.font = `bold 19px ${FONT}`;
+                ctx.fillText(`پایه ${a.grade} کلاس ${a.class}  |  ${a.teacher}  |  ساعت ${a.time}`, W - PAD - 16, y + HEAD / 2);
+
+                const rowsY = y + HEAD;
+                if (a.students.length === 0) {
+                    ctx.fillStyle = '#2e7d32';
+                    ctx.font = `bold 20px ${FONT}`;
+                    ctx.fillText('✅ غایب نداریم', W - PAD - 16, rowsY + ROW / 2);
+                } else {
+                    totalAbsent += a.students.length;
+                    a.students.forEach((name, i) => {
+                        const cy = rowsY + i * ROW + ROW / 2;
+                        const cx = W - PAD - 16 - 26;
+                        const url = photoOf(name);
+                        const img = url ? imgCache[url] : null;
+
+                        // دایره عکس (یا جایگزین)
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, 26, 0, Math.PI * 2);
+                        ctx.closePath();
+                        ctx.clip();
+                        if (img) {
+                            ctx.drawImage(img, cx - 26, cy - 26, 52, 52);
+                        } else {
+                            ctx.fillStyle = '#dfe3ea';
+                            ctx.fillRect(cx - 26, cy - 26, 52, 52);
+                        }
+                        ctx.restore();
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, 26, 0, Math.PI * 2);
+                        ctx.lineWidth = 3;
+                        ctx.strokeStyle = '#e53935';
+                        ctx.stroke();
+
+                        // نام
+                        ctx.fillStyle = '#c62828';
+                        ctx.font = `bold 20px ${FONT}`;
+                        ctx.fillText(`${i + 1}. ${name}`, cx - 42, cy);
+                    });
+                }
+                y += h;
+            });
+
+            // جمع کل
+            ctx.fillStyle = '#FFE66D';
+            roundRect(ctx, PAD, y + 8, W - PAD * 2, 56, 12);
+            ctx.fill();
+            ctx.fillStyle = '#111827';
+            ctx.font = `bold 22px ${FONT}`;
+            ctx.textAlign = 'center';
+            ctx.fillText(`جمع کل غایبین: ${totalAbsent} نفر`, W / 2, y + 36);
+
+            canvas.toBlob(blob => {
+                if (!blob) { alert('❌ ساخت تصویر ناموفق بود'); return; }
+                showImageReportModal(blob);
+            }, 'image/png');
+        }
+
+        function roundRect(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+
+        function showImageReportModal(blob) {
+            const url = URL.createObjectURL(blob);
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px;';
+            overlay.innerHTML = `
+                <div style="background:#fff;border-radius:14px;padding:14px;max-width:820px;width:100%;max-height:95vh;overflow:auto;text-align:center;">
+                    <img src="${url}" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #e5e7eb;">
+                    <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                        <a href="${url}" download="گزارش_غیبت.png" class="btn btn-small" style="text-decoration:none;">⬇️ دانلود تصویر</a>
+                        <button class="btn btn-success btn-small" id="imgCopyBtn">📋 کپی تصویر</button>
+                        <button class="btn btn-small" id="imgCloseBtn">بستن</button>
+                    </div>
+                    <p style="font-size:12px;color:#6b7280;margin-top:8px;">اگر کپی تصویر کار نکرد، تصویر را دانلود کنید و در پیام‌رسان ارسال کنید.</p>
+                </div>`;
+            document.body.appendChild(overlay);
+            const close = () => { URL.revokeObjectURL(url); overlay.remove(); };
+            overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+            overlay.querySelector('#imgCloseBtn').onclick = close;
+            const copyBtn = overlay.querySelector('#imgCopyBtn');
+            if (!(navigator.clipboard && window.ClipboardItem)) {
+                copyBtn.disabled = true;
+                copyBtn.title = 'مرورگر شما کپی تصویر را پشتیبانی نمی‌کند';
+            }
+            copyBtn.onclick = async () => {
+                try {
+                    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                    alert('✅ تصویر کپی شد. حالا می‌توانید در پیام‌رسان paste کنید.');
+                } catch (err) {
+                    alert('❌ کپی تصویر ممکن نیست. از دکمه دانلود استفاده کنید.');
+                }
+            };
         }
 
         // کپی گزارش روز
